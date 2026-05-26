@@ -79,20 +79,7 @@ npm run preview
 
 ## 🎨 Diseño y UX
 
-### Paleta de Colores
-- Verde principal (#10B981) - Sostenibilidad
-- Azul (#3B82F6) - Agua y reciclaje
-- Amarillo (#F59E0B) - Energía
-- Colores pastel para mejor legibilidad
-
-### Tipografía
-- Montserrat - Fuente moderna y legible
-- Jerarquía clara de tamaños y pesos
-
-### Animaciones
-- Micro-interacciones para feedback visual
-- Transiciones suaves entre estados
-- Animaciones de entrada escalonadas
+seguir las indicaciones del archivo DESIGN.md
 
 ## 📊 Datos y Precisión
 
