@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Medicamentos",
+    "container": "Punto SIGRE",
+    "category": "Residuos sanitarios",
+    "lerCode": "20 01 32",
+    "tip": "Los medicamentos caducados o sin usar van al punto SIGRE de la farmacia, nunca a la basura ni al inodoro.",
+    "preparation": "Retira los datos personales de los blísteres antes de depositar. Puedes llevarlos enteros en su caja.",
+    "examples": "Medicamentos caducados o sin usar, envases vacíos de medicamentos, jeringas sin aguja",
+    "avoid": "Tirarlos al inodoro (contaminan el agua potable) o a la basura ordinaria",
+    "funFact": "El punto SIGRE está disponible en más de 22.000 farmacias en toda España y garantiza la destrucción segura de fármacos.",
+    "tipCategory": "agua",
+    "icon": "medication"
+  }
+]

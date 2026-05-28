@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Vaso o vajilla de cristal",
+    "container": "Gris",
+    "category": "Residuos no reciclables",
+    "lerCode": "20 03 01",
+    "tip": "El cristal templado (vasos, copas, vajilla) NO va al contenedor verde. Ecoembes lo aclara: solo envases de vidrio al verde.",
+    "preparation": "Deposita en el contenedor gris, envuelto en papel periódico si está roto para evitar cortes.",
+    "examples": "Vasos de cristal, copas, platos de vidrio, vajilla Duralex, espejos, cristal de ventanas",
+    "avoid": "No lo pongas en el verde: un trozo de cristal templado puede arruinar una carga entera de vidrio reciclado",
+    "funFact": "El cristal templado tiene propiedades físicas diferentes al vidrio de envases. Es incompatible con el proceso estándar de reciclaje de vidrio.",
+    "tipCategory": "residuos",
+    "icon": "local_bar"
+  },
+  {
+    "name": "Pañales",
+    "container": "Gris",
+    "category": "Residuos no reciclables",
+    "lerCode": "20 03 01",
+    "tip": "Los pañales y productos de higiene femenina no son reciclables y van al contenedor gris.",
+    "preparation": "Ciérralos bien para evitar olores y contaminación del resto de residuos del contenedor.",
+    "examples": "Pañales de bebé y adulto, compresas, tampones, salvaslips",
+    "avoid": "No los mezcles con reciclables ni los tires al inodoro (obstruyen las tuberías)",
+    "funFact": "En España ya existen proyectos piloto para reciclar pañales y convertirlos en materiales de construcción como plásticos y celulosa.",
+    "tipCategory": "residuos",
+    "icon": "child_care"
+  },
+  {
+    "name": "Cerámica y porcelana",
+    "container": "Gris",
+    "category": "Residuos no reciclables",
+    "lerCode": "20 03 01",
+    "tip": "La cerámica y porcelana NO van al verde. Ecoembes advierte que contaminan toda la carga de vidrio reciclado.",
+    "preparation": "Si son piezas grandes o en buen estado, llévalas al punto limpio. Si están rotas, envúelvelas en papel.",
+    "examples": "Platos rotos, tazas de cerámica, jarrones, azulejos, tejas",
+    "avoid": "Nunca deposites cerámica en el verde: un trozo contamina una tonelada de vidrio reciclado",
+    "funFact": "Un solo trozo de cerámica puede inutilizar una tonelada entera de vidrio reciclado. La cerámica se funde a temperaturas distintas al vidrio.",
+    "tipCategory": "residuos",
+    "icon": "coffee_maker"
+  },
+  {
+    "name": "Chicles y colillas",
+    "container": "Gris",
+    "category": "Residuos no reciclables",
+    "lerCode": "20 03 01",
+    "tip": "Los chicles y colillas van al contenedor gris. Nunca al suelo: son de los residuos más contaminantes.",
+    "preparation": "Envúelve los chicles en papel antes de depositar para evitar que se peguen al contenedor.",
+    "examples": "Chicles usados, colillas de cigarrillos, palillos de fósforos",
+    "avoid": "Tirarlos al suelo (los chicles tardan 5 años en degradarse; las colillas liberan nicotina y metales pesados)",
+    "funFact": "Una sola colilla puede contaminar hasta 50 litros de agua subterránea y tarda 10 años en degradarse en el entorno.",
+    "tipCategory": "agua",
+    "icon": "remove_circle_outline"
+  },
+  {
+    "name": "Cepillos de dientes",
+    "container": "Gris",
+    "category": "Residuos no reciclables",
+    "lerCode": "20 03 01",
+    "tip": "Los cepillos de dientes convencionales no son reciclables. Considera opciones de bambú compostables.",
+    "preparation": "Considera programas de reciclaje especializados de marcas como Oral-B.",
+    "examples": "Cepillos de dientes, peines, cuchillas de afeitar",
+    "avoid": "Opciones de plástico de un solo uso",
+    "funFact": "Cada año se tiran 4.700 millones de cepillos de dientes a nivel mundial.",
+    "tipCategory": "residuos",
+    "icon": "hive"
+  },
+  {
+    "name": "Fotos",
+    "container": "Gris",
+    "category": "Residuos no reciclables",
+    "lerCode": "20 03 01",
+    "tip": "Las fotografías impresas contienen químicos que impiden su reciclaje.",
+    "preparation": "Si tienen información sensible, destrúyelas antes de desechar.",
+    "examples": "Fotos reveladas, papel fotográfico",
+    "avoid": "Depositarlas en el contenedor azul",
+    "funFact": "El papel fotográfico contiene capas de haluro de plata que son incompatibles con el reciclaje estándar.",
+    "tipCategory": "residuos",
+    "icon": "photo"
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Restos de comida",
+    "container": "Marrón",
+    "category": "Residuos orgánicos",
+    "lerCode": "20 01 08",
+    "tip": "Los restos de comida se convierten en compost de alta calidad, reduciendo emisiones de metano hasta un 50%.",
+    "preparation": "Usa una bolsa compostable certificada o papel de periódico para envolver los restos antes de depositarlos.",
+    "examples": "Frutas, verduras, cáscaras, restos de carne y pescado, restos de pan",
+    "avoid": "Aceites de cocina (punto limpio), envases de plástico, papel plastificado con comida",
+    "funFact": "El compostaje de residuos orgánicos domésticos puede generar hasta 300 kg de abono por hogar y año.",
+    "tipCategory": "residuos",
+    "icon": "compost"
+  },
+  {
+    "name": "Cáscaras de huevo",
+    "container": "Marrón",
+    "category": "Residuos orgánicos",
+    "lerCode": "20 01 08",
+    "tip": "Las cáscaras de huevo aportan calcio al compost. Son 100% biodegradables.",
+    "preparation": "Puedes aplastarlas ligeramente para que se descompongan más rápido.",
+    "examples": "Cáscaras de huevo, cáscaras de frutos secos",
+    "avoid": "Cáscaras con restos de alimentos no orgánicos",
+    "funFact": "Las cáscaras de huevo enriquecen el compost con calcio, magnesio y fósforo.",
+    "tipCategory": "residuos",
+    "icon": "egg"
+  },
+  {
+    "name": "Restos de café",
+    "container": "Marrón",
+    "category": "Residuos orgánicos",
+    "lerCode": "20 01 08",
+    "tip": "Los posos de café son excelentes para el compost. Incluye los filtros de papel.",
+    "preparation": "Los filtros de papel van junto con los posos. Las cápsulas van a su contenedor específico.",
+    "examples": "Posos de café, bolsitas de té, infusiones",
+    "avoid": "Cápsulas de café de aluminio (amarillo) o plástico",
+    "funFact": "Los posos de café son ricos en nitrógeno y ayudan a acelerar el proceso de compostaje.",
+    "tipCategory": "residuos",
+    "icon": "coffee"
+  },
+  {
+    "name": "Plantas y flores",
+    "container": "Marrón",
+    "category": "Residuos orgánicos",
+    "lerCode": "20 01 08",
+    "tip": "Las plantas marchitas y flores son materia orgánica perfecta para compostaje.",
+    "preparation": "Corta en trozos pequeños para acelerar la descomposición. Sin tierra de maceta.",
+    "examples": "Flores marchitas, hojas secas, pequeñas ramas",
+    "avoid": "Tierra de macetas con productos químicos",
+    "funFact": "Las flores compostadas liberan nutrientes clave en el suelo: potasio, fósforo y nitrógeno.",
+    "tipCategory": "residuos",
+    "icon": "local_florist"
+  },
+  {
+    "name": "Servilletas usadas",
+    "container": "Marrón",
+    "category": "Residuos orgánicos",
+    "lerCode": "20 01 08",
+    "tip": "El papel sucio con restos orgánicos va al marrón, no al azul.",
+    "preparation": "Solo si tienen restos de comida. Si están limpias, van al azul.",
+    "examples": "Servilletas usadas, papel de cocina con comida",
+    "avoid": "Papel plastificado o con tintas tóxicas",
+    "funFact": "El papel mojado o sucio contamina la carga entera del contenedor azul.",
+    "tipCategory": "residuos",
+    "icon": "sticky_note_2"
+  }
+]

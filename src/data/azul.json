@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Papel",
+    "container": "Azul",
+    "category": "Papel y cartón",
+    "lerCode": "15 01 01",
+    "tip": "En el contenedor azul solo van envases y embalajes de papel y cartón. No todo el papel es reciclable aquí.",
+    "preparation": "Retira grapas y clips metálicos. Solo si está limpio y seco.",
+    "examples": "Folios, revistas, periódicos, libretas, papel de regalo limpio",
+    "avoid": "Papel sucio, plastificado, papel térmico de tickets o papel con restos de comida",
+    "funFact": "Cada tonelada de papel reciclado salva 17 árboles y 26.500 litros de agua.",
+    "tipCategory": "residuos",
+    "icon": "description"
+  },
+  {
+    "name": "Cartón",
+    "container": "Azul",
+    "category": "Papel y cartón",
+    "lerCode": "15 01 01",
+    "tip": "Pliega siempre las cajas antes de meterlas en el contenedor azul. Ocupan 4 veces menos espacio.",
+    "preparation": "Desmonta y pliega las cajas. Retira cualquier resto de plástico, cinta adhesiva o grapas metálicas.",
+    "examples": "Cajas de cartón, envases de cereales, hueveras de cartón, cajas de pizza (solo la parte sin grasa)",
+    "avoid": "Cartón muy sucio con grasa (el de la caja de pizza manchada va al gris o marrón), brick de leche (va al amarillo)",
+    "funFact": "El cartón puede reciclarse entre 5 y 7 veces. Cada ciclo de reciclaje acorta las fibras de celulosa.",
+    "tipCategory": "residuos",
+    "icon": "inventory_2"
+  },
+  {
+    "name": "Periódico",
+    "container": "Azul",
+    "category": "Papel y cartón",
+    "lerCode": "15 01 01",
+    "tip": "Los periódicos y revistas son 100% reciclables en el contenedor azul si están limpios y secos.",
+    "preparation": "Apílalos y átalos con un cordel para facilitar la recogida. Elimina cualquier elemento extraño.",
+    "examples": "Diarios, revistas, catálogos publicitarios, folletos de propaganda",
+    "avoid": "Papel térmico de tickets de caja registradora, papel parafinado de carnicerías o pescaderías",
+    "funFact": "El papel de periódico se recicla en menos de 7 días para convertirse en papel nuevo.",
+    "tipCategory": "residuos",
+    "icon": "newspaper"
+  },
+  {
+    "name": "Sobre",
+    "container": "Azul",
+    "category": "Papel y cartón",
+    "lerCode": "15 01 01",
+    "tip": "Los sobres van al contenedor azul incluso si tienen ventanilla de plástico; la planta los separa.",
+    "preparation": "No hace falta retirar la ventanilla de plástico. Las plantas de selección lo separan automáticamente.",
+    "examples": "Sobres de correo, carpetas de cartón, archivadores de cartón",
+    "avoid": "Sobres acolchados con plástico de burbujas (van al amarillo), sobres metalizados (gris)",
+    "funFact": "Las plantas de selección de Ecoembes usan separadores ópticos infrarrojos para clasificar materiales mixtos.",
+    "tipCategory": "residuos",
+    "icon": "mail"
+  },
+  {
+    "name": "Bolsas de papel",
+    "container": "Azul",
+    "category": "Papel y cartón",
+    "lerCode": "15 01 01",
+    "tip": "Las bolsas de papel limpias van al azul. Si tienen manchas de grasa o comida, van al gris.",
+    "preparation": "Asegúrate de que estén limpias y secas antes de depositarlas en el contenedor azul.",
+    "examples": "Bolsas de papel de tienda, bolsas de papel para snacks, papel de regalo",
+    "avoid": "Bolsas sucias con grasa o restos de comida, papel de regalo con purpurina o plastificado (van al gris)",
+    "funFact": "El papel kraft de las bolsas de tienda se obtiene del mismo proceso que el papel de embalaje. Es 100% reciclable si está limpio.",
+    "tipCategory": "residuos",
+    "icon": "shopping_bag"
+  }
+]

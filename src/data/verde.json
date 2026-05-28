@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Botella de vidrio",
+    "container": "Verde",
+    "category": "Envases de vidrio",
+    "lerCode": "15 01 07",
+    "tip": "Solo van al verde los ENVASES de vidrio. El cristal, los espejos y la cerámica NO son vidrio reciclable.",
+    "preparation": "Vacía y enjuaga brevemente. No es necesario retirar la etiqueta; se quema en el horno.",
+    "examples": "Botellas de vino, cerveza, aceite, agua con gas, licores",
+    "avoid": "Cristal de ventanas, espejos, bombillas, vasos de cristal, vajilla de cerámica o porcelana (todos al gris)",
+    "funFact": "El vidrio es 100% reciclable infinitamente sin degradar su calidad. Reciclado, vuelve a ser botella en 30 días.",
+    "tipCategory": "residuos",
+    "icon": "wine_bar"
+  },
+  {
+    "name": "Tarro de vidrio",
+    "container": "Verde",
+    "category": "Envases de vidrio",
+    "lerCode": "15 01 07",
+    "tip": "Los tarros de vidrio van al verde. Retira la tapa metálica, que va al contenedor amarillo.",
+    "preparation": "Retira la tapa metálica (va al amarillo como envase metálico) y deposita solo el tarro de vidrio.",
+    "examples": "Tarros de mermelada, conservas vegetales, salsas, patés en tarro de vidrio",
+    "avoid": "Cerámica, porcelana, cristal de copas o vajilla (todos van al gris), cerámica artesanal (punto limpio)",
+    "funFact": "Reciclar una botella de vidrio ahorra energía suficiente para encender un ordenador durante 25 minutos.",
+    "tipCategory": "energía",
+    "icon": "kitchen"
+  },
+  {
+    "name": "Frasco de perfume",
+    "container": "Verde",
+    "category": "Envases de vidrio",
+    "lerCode": "15 01 07",
+    "tip": "El cuerpo de vidrio del frasco va al verde. Retira el atomizador y el tapón antes.",
+    "preparation": "Retira el atomizador y tapón de plástico o metal (van al amarillo). Deposita solo la parte de vidrio.",
+    "examples": "Frascos de perfume, colonias, frascos de esmalte de uñas (sin restos)",
+    "avoid": "Frascos con restos abundantes de producto potencialmente peligroso (punto limpio)",
+    "funFact": "La producción de vidrio con material reciclado emite un 20% menos de CO₂ que el vidrio virgen.",
+    "tipCategory": "residuos",
+    "icon": "colorize"
+  }
+]

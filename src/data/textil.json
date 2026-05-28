@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Ropa y textiles",
+    "container": "Contenedor textil",
+    "category": "Textiles y calzado",
+    "lerCode": "20 01 10",
+    "tip": "La ropa usada en buen estado se reutiliza; la deteriorada se recicla en fibras. Usa los contenedores textiles.",
+    "preparation": "Lava la ropa antes de depositar. Mete las prendas en una bolsa de plástico cerrada para protegerlas de la humedad.",
+    "examples": "Ropa, zapatos, bolsos, cinturones, cortinas, sábanas, toallas, mantas",
+    "avoid": "Ropa sucia o húmeda (podría contaminar y deteriorar el resto), residuos mezclados con la ropa",
+    "funFact": "La industria textil genera el 10% de las emisiones globales de CO₂. Extender la vida de una prenda un año reduce su huella un 24%.",
+    "tipCategory": "residuos",
+    "icon": "checkroom"
+  }
+]
