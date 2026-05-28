@@ -1,11 +1,12 @@
-.btn-hover {
-  width: 200px;
+.btn-primary {
+  width: auto;
   font-size: 16px;
   font-weight: 600;
   color: #F8FAF7;
   cursor: pointer;
   margin: 20px;
-  height: 55px;
+  padding: 10px 40px;
+  height: 45px;
   text-align: center;
   border: none;
   background-size: 300% 100%;
@@ -13,27 +14,32 @@
   transition: all 0.4s ease-in-out;
 }
 
-.btn-hover:hover {
+.btn-primary:hover {
   background-position: 100% 0;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out ;
+  transform: translateY(-2px);
 }
 
-.btn-hover:focus {
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-primary:focus {
   outline: none;
 }
 
-.btn-hover:focus-visible {
+.btn-primary:focus-visible {
   background-position: 100% 0;
   outline: 3px solid #006837;
   outline-offset: 3px;
 }
 
-.btn-hover:disabled {
+.btn-primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.btn-hover.color-5 {
+.btn-primary.color-primary {
   background-image: linear-gradient(
     to right,
     #006837,
@@ -43,4 +49,81 @@
     #006837
   );
   box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}
+
+/* ── Secondary button ── */
+.btn-secondary {
+  display: inline-block;
+  position: relative;
+  border-radius: 5px 60px 5px 60px;
+  border: none;
+  background: none;
+  padding: .5em 1.25em;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.5s;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #004d27;
+  color: #004d27;
+  background-image: none;
+  z-index: 0;
+}
+
+.btn-secondary::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 5px 60px 5px 60px;
+  transition: all 0.5s;
+  background: linear-gradient(45deg, #006837 0%, #008748 50%, #35524A 100%);
+}
+
+.btn-secondary::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  z-index: -1;
+  border-radius: 4px 58px 4px 58px;
+  transition: all 0.5s;
+  background: var(--color-surface, #fff);
+}
+
+.btn-secondary:hover {
+  -webkit-text-fill-color: #F8FAF7;
+  color: #F8FAF7;
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.75);
+}
+
+.btn-secondary:hover::after {
+  left: 100%;
+  top: 100%;
+  bottom: 100%;
+  right: 100%;
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary:focus {
+  outline: none;
+}
+
+.btn-secondary:focus-visible {
+  outline: 3px solid #006837;
+  outline-offset: 3px;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

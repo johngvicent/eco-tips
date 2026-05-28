@@ -198,7 +198,6 @@ const VisualGuide = ({ onNavigate }) => {
           </p>
         </div>
         <Button
-          variant="ghost"
           onClick={() => onNavigate('search')}
           className="bg-primary text-on-primary text-button font-display px-8 py-4 rounded-xl hover:opacity-90 transition-base custom-shadow min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 whitespace-nowrap"
         >

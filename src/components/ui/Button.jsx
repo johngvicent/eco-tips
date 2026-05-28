@@ -18,7 +18,7 @@ export default function Button({ children, onClick, type = 'button', disabled = 
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={variant === 'primary' ? `btn-hover color-5 ${className}` : className}
+      className={variant === 'primary' ? `btn-primary color-primary ${className}` : variant === 'secondary' ? `btn-secondary ${className}` : className}
       {...props}
     >
       {children}

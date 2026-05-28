@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { WASTE_DATA, ECO_TIPS } from '../../constants'
+import { ECO_TIPS } from '../../constants'
 import Button from '../ui/Button'
+import Hero from '../sections/hero'
 
 // Randomly pick a daily tip seeded by today's date
 const getDailyTip = () => {
@@ -32,91 +32,14 @@ const LEARN_CARDS = [
 ]
 
 const Dashboard = ({ onNavigate }) => {
-  const [query, setQuery] = useState('')
-  const [results, setResults] = useState([])
   const dailyTip = getDailyTip()
 
-  useEffect(() => {
-    if (!query.trim()) { setResults([]); return }
-    const q = query.toLowerCase()
-    setResults(
-      WASTE_DATA.filter(
-        item =>
-          item.name.toLowerCase().includes(q) ||
-          item.examples.toLowerCase().includes(q) ||
-          item.lerCode.includes(q)
-      ).slice(0, 5)
-    )
-  }, [query])
-
-  const handleResultClick = (item) => {
-    setQuery(item.name)
-    setResults([])
-    onNavigate('search')
-  }
-
   return (
-    <div className="max-w-safe-width mx-auto px-space-4 py-space-6 space-y-space-6">
-
+    <>
       {/* ── Hero + Search ── */}
-      <section className="flex flex-col md:flex-row gap-space-5 items-center justify-between py-space-4">
-        <div className="w-full md:w-1/2 space-y-space-4">
-          <h1 className="font-display text-headline-xl text-primary max-w-lg">
-            Transforma tus residuos en impacto positivo
-          </h1>
-          <p className="text-body-lg text-secondary max-w-md">
-            Descubre cómo reciclar correctamente cualquier objeto y visualiza el cambio que generas.
-          </p>
+      <Hero onNavigate={onNavigate} />
 
-          {/* Quick search widget */}
-          <div className="relative max-w-lg mt-space-5 group">
-            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-outline text-[20px]">search</span>
-            </div>
-            <input
-              type="search"
-              aria-label="Búsqueda rápida de residuos"
-              aria-autocomplete="list"
-              aria-controls="hero-results"
-              placeholder="¿Qué quieres desechar hoy?"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              className="w-full pl-12 pr-space-4 py-4 bg-surface-container-low border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-base custom-shadow outline-none text-body-md"
-            />
-            {results.length > 0 && (
-              <ul
-                id="hero-results"
-                role="listbox"
-                className="absolute left-0 right-0 top-full mt-2 bg-surface-container-lowest rounded-xl custom-shadow border border-outline-variant overflow-hidden z-50"
-              >
-                {results.map(item => (
-                  <li key={item.name} role="option">
-                    <Button
-                      variant="ghost"
-                      onClick={() => handleResultClick(item)}
-                      className="w-full text-left px-space-4 py-3 flex items-center gap-3 hover:bg-surface-container transition-base text-body-md text-on-surface focus-visible:bg-surface-container focus-visible:outline-none"
-                    >
-                      <span className="material-symbols-outlined text-[18px] text-on-surface-variant">{item.icon}</span>
-                      <span className="flex-1">{item.name}</span>
-                      <span className="text-label-md text-on-surface-variant">{item.container}</span>
-                    </Button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-
-        {/* Hero visual — gradient block with icon */}
-        <div
-          aria-hidden="true"
-          className="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden custom-shadow border border-surface-variant bg-linear-to-br from-mint-green via-surface-container to-primary-fixed flex items-center justify-center"
-        >
-          <span className="material-symbols-outlined text-primary opacity-30" style={{ fontSize: '180px', fontVariationSettings: "'FILL' 1" }}>
-            recycling
-          </span>
-        </div>
-      </section>
+      <div className="max-w-safe-width mx-auto px-space-4 py-space-6 space-y-space-6">
 
       {/* ── Bento Grid: Tip + KPIs ── */}
       <section aria-label="Estadísticas de impacto" className="grid grid-cols-1 md:grid-cols-4 gap-space-4">
@@ -173,7 +96,7 @@ const Dashboard = ({ onNavigate }) => {
             <h2 className="font-display text-headline-lg text-primary mb-space-3">Próximos Pasos Circulares</h2>
             <p className="text-body-md text-secondary mb-space-4">Nuestra guía editorial para llevar tu sostenibilidad al siguiente nivel.</p>
             <Button
-              variant="ghost"
+              variant="secondary"
               onClick={() => onNavigate('guide')}
               className="text-button text-primary font-display border-2 border-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-on-primary transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
             >
@@ -201,7 +124,8 @@ const Dashboard = ({ onNavigate }) => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   )
 }
 
