@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { WASTE_DATA, CONTAINER_STYLES } from "../../constants"
 import Button from "../ui/Button"
+import SearchBox from "../ui/SearchBox"
 
 const WasteSearch = ({ onNavigate }) => {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState([])
   const [selected, setSelected] = useState(null)
   const [activeTab, setActiveTab] = useState("prep")
-  const inputRef = useRef(null)
 
   const normalize = (str) =>
     str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -52,58 +52,17 @@ const WasteSearch = ({ onNavigate }) => {
       {/* Search Box */}
       <section aria-label="Búsqueda" className="relative max-w-2xl">
         <label htmlFor="waste-search" className="sr-only">Buscar residuo</label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-            <span className="material-symbols-outlined text-outline text-[22px]">search</span>
-          </div>
-          <input
-            id="waste-search"
-            ref={inputRef}
-            type="search"
-            aria-autocomplete="list"
-            aria-controls={results.length ? "search-results" : undefined}
-            aria-expanded={results.length > 0}
-            placeholder="Ej: botella de vidrio, cartón pizza, LER 15 01 01…"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            className="w-full pl-12 pr-space-4 py-4 bg-surface-container-low border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-base custom-shadow outline-none text-body-md"
-          />
-          {query && (
-            <Button
-              variant="ghost"
-              onClick={() => { setQuery(""); setSelected(null); setResults([]); inputRef.current?.focus() }}
-              aria-label="Limpiar búsqueda"
-              className="absolute inset-y-0 right-4 flex items-center text-outline hover:text-primary transition-base"
-            >
-              <span className="material-symbols-outlined text-[20px]">close</span>
-            </Button>
-          )}
-        </div>
-
-        {/* Dropdown Results */}
-        {results.length > 0 && (
-          <ul
-            id="search-results"
-            role="listbox"
-            className="absolute left-0 right-0 top-full mt-2 bg-surface-container-lowest rounded-xl custom-shadow border border-outline-variant overflow-hidden z-50 max-h-72 overflow-y-auto"
-          >
-            {results.map(item => (
-              <li key={item.name} role="option" aria-selected={selected?.name === item.name}>
-                <Button
-                  variant="ghost"
-                  onClick={() => selectItem(item)}
-                  className="w-full text-left px-space-4 py-3 flex items-center gap-3 hover:bg-surface-container transition-base text-body-md text-on-surface focus-visible:bg-surface-container focus-visible:outline-none"
-                >
-                  <span className="material-symbols-outlined text-[18px] text-primary">{item.icon}</span>
-                  <span className="flex-1">{item.name}</span>
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${CONTAINER_STYLES[item.container]?.badge ?? "bg-surface text-on-surface"}`}>
-                    {item.container}
-                  </span>
-                </Button>
-              </li>
-            ))}
-          </ul>
-        )}
+        <SearchBox
+          value={query}
+          onChange={setQuery}
+          results={results}
+          onSelect={selectItem}
+          onClear={() => { setQuery(""); setSelected(null); setResults([]) }}
+          placeholder="Ej: botella de vidrio, cartón pizza, LER 15 01 01…"
+          id="waste-search"
+          resultsId="search-results"
+          containerStyles={CONTAINER_STYLES}
+        />
       </section>
 
       {/* Result Panel */}
