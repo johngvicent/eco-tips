@@ -11,6 +11,9 @@ const ImpactCounter= lazy(() => import('./components/screen/ImpactCounter'))
 const VisualGuide  = lazy(() => import('./components/screen/VisualGuide'))
 const EcoTips      = lazy(() => import('./components/screen/EcoTips'))
 const Stats        = lazy(() => import('./components/screen/Stats'))
+const Legal        = lazy(() => import('./components/screen/Legal'))
+const Privacidad   = lazy(() => import('./components/screen/Privacidad'))
+const Cookies      = lazy(() => import('./components/screen/Cookies'))
 
 const VIEWS = {
   dashboard:  Dashboard,
@@ -19,6 +22,9 @@ const VIEWS = {
   guide:      VisualGuide,
   tips:       EcoTips,
   stats:      Stats,
+  legal:      Legal,
+  privacidad: Privacidad,
+  cookies:    Cookies,
 }
 
 function App() {
@@ -55,7 +61,7 @@ function App() {
         </main>
 
         {/* ── Footer ── */}
-        <Footer />
+        <Footer onNavigate={setCurrentView} />
 
         {/* ── Mobile Bottom Navigation ── */}
         <BottomNav currentView={currentView} onNavigate={setCurrentView} />

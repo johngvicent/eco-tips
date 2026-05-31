@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "category": "Conservación",
+    "title": "Avance histórico en la reforestación del Amazonas mediante IA",
+    "excerpt": "Nuevos algoritmos permiten identificar las áreas más críticas para plantar especies nativas con una tasa de éxito del 90%.",
+    "readTime": "5 min lectura",
+    "icon": "forest"
+  },
+  {
+    "id": 2,
+    "category": "Innovación",
+    "title": "Científicos crean un plástico 100% biodegradable a partir de algas",
+    "excerpt": "El nuevo material se disuelve en agua de mar en menos de 4 semanas sin dejar microplásticos nocivos para la fauna.",
+    "readTime": "3 min lectura",
+    "icon": "science"
+  },
+  {
+    "id": 3,
+    "category": "Energía",
+    "title": "Las energías renovables superan al carbón por primera vez en Europa",
+    "excerpt": "Un hito energético que marca el inicio del fin de los combustibles fósiles en el continente tras décadas de inversión.",
+    "readTime": "4 min lectura",
+    "icon": "solar_power"
+  }
+]
