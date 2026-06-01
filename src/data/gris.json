@@ -654,10 +654,10 @@
     "container": "Gris",
     "category": "Residuos no reciclables",
     "lerCode": "20 03 01",
-    "tip": "La bolsa de palomitas de microondas va al contenedor gris: es un material compuesto de papel y lámina metálica inseparables, además de estar impregnada de grasa.",
+    "tip": "La bolsa de palomitas de microondas va al contenedor gris: aunque por fuera parece papel, lleva un susceptor con lámina metalizada inseparable y además suele quedar impregnada de grasa.",
     "preparation": "Vacía los restos de palomitas (al marrón si no llevan sal ni mantequilla, al gris si llevan). Deposita la bolsa en el gris.",
     "examples": "Bolsas de palomitas de microondas de cualquier marca y sabor",
-    "avoid": "No al azul: aunque parece papel, la lámina metálica interior (susceptor) y la grasa impiden su reciclaje en papelera.",
+    "avoid": "No al azul: esto aplica a la bolsa de microondas. La bolsa de papel simple para palomitas, si está limpia, sí puede ir al azul.",
     "funFact": "El susceptor metálico de la bolsa es una fina capa de aluminio depositada sobre poliéster que alcanza 230 °C en segundos para tostar las palomitas; esta bicapa es imposible de separar para reciclar.",
     "tipCategory": "residuos",
     "icon": "microwave"

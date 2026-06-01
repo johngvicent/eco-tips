@@ -521,11 +521,11 @@ const ImpactCounter = ({ onNavigate }) => {
             </div>
 
             {/* Action buttons */}
-            <div className="flex items-center gap-space-3 pt-space-2 border-t border-border">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-2 pt-space-2 border-t border-border">
               <Button
                 variant="secondary"
                 onClick={handleReset}
-                className="flex items-center gap-1.5"
+                className="!m-0 w-full sm:w-auto flex items-center justify-center gap-1.5 !px-space-4 !py-2.5 !h-auto min-h-11"
               >
                 <span className="material-symbols-outlined text-[18px]">restart_alt</span>
                 Reiniciar
@@ -533,7 +533,7 @@ const ImpactCounter = ({ onNavigate }) => {
               <Button
                 type="button"
                 onClick={handleAddEntry}
-                className="flex-1 flex items-center justify-center gap-1.5 bg-primary text-on-primary px-space-4 py-2.5 rounded-lg text-label-md font-bold hover:opacity-90 active:scale-95 transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+                className="!m-0 w-full sm:flex-1 flex items-center justify-center gap-1.5 bg-primary text-on-primary px-space-4 py-2.5 !h-auto min-h-11 rounded-lg text-label-md font-bold hover:opacity-90 active:scale-95 transition-bezier focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
               >
                 <span className="material-symbols-outlined text-[18px]">add_circle</span>
                 Añadir al cálculo
@@ -637,20 +637,26 @@ const ImpactCounter = ({ onNavigate }) => {
       </div>
 
       {/* Featured article */}
-      <section className="bg-primary-fixed rounded-xl p-space-5 custom-shadow flex flex-col md:flex-row gap-space-4 items-center">
-        <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
-          <span className="material-symbols-outlined text-primary text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>eco</span>
+      <section
+        className="relative rounded-xl p-space-5 custom-shadow flex flex-col md:flex-row gap-space-4 items-center overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('/img/growing-plants.jpg')" }}
+      >
+        {/* Dark scrim — ensures WCAG AA contrast (≥4.5:1) for white text over the photo */}
+        <div className="absolute inset-0 bg-black/55" aria-hidden="true" />
+
+        <div className="relative z-10 w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+          <span className="material-symbols-outlined text-white text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>eco</span>
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-label-md text-primary uppercase tracking-wider font-bold mb-1">Lectura recomendada</p>
-          <h3 className="font-display text-headline-sm text-primary">¿Qué ocurre con tu reciclaje después del contenedor?</h3>
-          <p className="text-body-md text-on-primary-fixed-variant mt-1">Descubre el viaje de tus residuos desde la recogida hasta la nueva materia prima.</p>
+        <div className="relative z-10 flex-1 min-w-0">
+          <p className="text-label-md text-white/80 uppercase tracking-wider font-bold mb-1">Lectura recomendada</p>
+          <h3 className="font-display text-headline-sm text-white">¿Qué ocurre con tu reciclaje después del contenedor?</h3>
+          <p className="text-body-md text-white/75 mt-1">Descubre el viaje de tus residuos desde la recogida hasta la nueva materia prima.</p>
         </div>
         <Button
-          variant="ghost"
+          variant="primary"
           onClick={() => onNavigate("guide")}
           aria-label="Ver Guía Visual completa"
-          className="shrink-0 bg-primary text-on-primary px-5 py-2.5 rounded-lg text-button font-display hover:opacity-90 transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          className="relative z-10 shrink-0 bg-white text-primary px-5 py-2.5 rounded-lg text-button font-display hover:opacity-90 transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
         >
           Ver Guía
         </Button>

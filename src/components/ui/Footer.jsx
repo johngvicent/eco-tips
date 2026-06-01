@@ -5,10 +5,10 @@ const LEGAL_LINKS = [
 ]
 
 const SOCIAL_LINKS = [
-  { label: 'GitHub',   img: '/branding/icon-github.png',   href: '#' },
-  { label: 'LinkedIn', img: '/branding/icon-linkedin.png', href: '#' },
-  { label: 'Web',      icon: 'public',                     href: '#' },
-  { label: 'PayPal',   img: '/branding/icon-paypal.png',   href: '#' },
+  { label: 'GitHub',   img: '/branding/icon-github.png',   href: 'https://github.com/johngvicent' },
+  { label: 'LinkedIn', img: '/branding/icon-linkedin.png', href: 'https://www.linkedin.com/in/johngonzalezvicent/' },
+  { label: 'Web',      icon: 'public',                     href: 'https://johnvicent.es/' },
+  { label: 'PayPal',   img: '/branding/icon-paypal.png',   href: 'https://buymeacoffee.com/johngvicent' },
 ]
 
 export default function Footer({ onNavigate }) {

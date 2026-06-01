@@ -21,6 +21,7 @@ const SearchBox = ({
   onChange,
   results = [],
   onSelect,
+  onEnter,
   placeholder = 'Buscar...',
   id = 'search-box',
   resultsId,
@@ -47,8 +48,15 @@ const SearchBox = ({
       setActiveIndex(i => Math.max(i - 1, 0))
     } else if (e.key === 'Enter') {
       e.preventDefault()
-      const target = activeIndex >= 0 ? results[activeIndex] : results[0]
-      if (target) { setActiveIndex(-1); onSelect(target) }
+      if (activeIndex >= 0) {
+        const target = results[activeIndex]
+        if (target) { setActiveIndex(-1); onSelect(target) }
+      } else if (onEnter) {
+        onEnter(results)
+      } else {
+        const target = results[0]
+        if (target) { setActiveIndex(-1); onSelect(target) }
+      }
     } else if (e.key === 'Escape') {
       setActiveIndex(-1)
     }

@@ -8,13 +8,14 @@ const WasteSearch = ({ onNavigate }) => {
   const [results, setResults] = useState([])
   const [selected, setSelected] = useState(null)
   const [activeTab, setActiveTab] = useState("prep")
+  const [listResults, setListResults] = useState(null)
 
   const normalize = (str) =>
     str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
   useEffect(() => {
     const q = normalize(query.trim())
-    if (!q) { setResults([]); return }
+    if (!q) { setResults([]); setListResults(null); return }
     setResults(
       WASTE_DATA.filter(
         item =>
@@ -25,13 +26,25 @@ const WasteSearch = ({ onNavigate }) => {
       )
     )
     setSelected(null)
+    setListResults(null)
   }, [query])
 
   const selectItem = (item) => {
     setSelected(item)
     setResults([])
+    setListResults(null)
     setQuery(item.name)
     setActiveTab("prep")
+  }
+
+  const handleEnter = (res) => {
+    if (!res || res.length === 0) return
+    if (res.length === 1) {
+      selectItem(res[0])
+    } else {
+      setListResults(res)
+      setResults([])
+    }
   }
 
   const containerStyle = selected ? CONTAINER_STYLES[selected.container] : null
@@ -57,13 +70,43 @@ const WasteSearch = ({ onNavigate }) => {
           onChange={setQuery}
           results={results}
           onSelect={selectItem}
-          onClear={() => { setQuery(""); setSelected(null); setResults([]) }}
+          onClear={() => { setQuery(""); setSelected(null); setResults([]); setListResults(null) }}
           placeholder="Ej: botella de vidrio, cartón pizza, LER 15 01 01…"
           id="waste-search"
           resultsId="search-results"
+          onEnter={handleEnter}
           containerStyles={CONTAINER_STYLES}
         />
       </section>
+
+      {/* Multi-result disambiguation list */}
+      {listResults && !selected && (
+        <section aria-label="Elige un resultado" className="space-y-space-3 max-w-2xl">
+          <p className="text-label-md text-on-surface-variant">
+            Encontramos <strong>{listResults.length} coincidencias</strong>. ¿Cuál quisiste decir?
+          </p>
+          <ul className="divide-y divide-border rounded-xl overflow-hidden custom-shadow border border-outline-variant" role="list">
+            {listResults.map(item => {
+              const style = CONTAINER_STYLES[item.container]
+              return (
+                <li key={item.name} role="listitem">
+                  <Button
+                    variant="ghost"
+                    onClick={() => selectItem(item)}
+                    className="w-full flex items-center gap-space-3 px-space-4 py-3 text-left hover:bg-surface-container transition-base focus-visible:outline-none focus-visible:bg-surface-container min-h-11"
+                  >
+                    <span className="material-symbols-outlined text-primary text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
+                    <span className="flex-1 text-body-md text-on-surface">{item.name}</span>
+                    <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${style?.badge ?? 'bg-surface text-on-surface'}`}>
+                      {item.container}
+                    </span>
+                  </Button>
+                </li>
+              )
+            })}
+          </ul>
+        </section>
+      )}
 
       {/* Result Panel */}
       {selected && containerStyle && (
@@ -165,7 +208,7 @@ const WasteSearch = ({ onNavigate }) => {
       )}
 
       {/* Empty state */}
-      {query.trim() && results.length === 0 && !selected && (
+      {query.trim() && results.length === 0 && !selected && !listResults && (
         <div className="flex flex-col items-center justify-center py-space-6 text-center gap-space-4">
           <span className="material-symbols-outlined text-primary text-6xl opacity-30">search_off</span>
           <p className="text-body-lg text-on-surface-variant max-w-sm">
