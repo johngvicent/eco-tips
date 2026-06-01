@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { WASTE_DATA } from '../../constants'
 import Button from '../ui/Button'
 
@@ -119,14 +119,24 @@ const CONTAINERS = [
 const VisualGuide = ({ onNavigate }) => {
   const [activeContainer, setActiveContainer] = useState(null)
   const [showAllItems, setShowAllItems] = useState(false)
+  const [currentPage, setCurrentPage] = useState(0)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const handleToggle = (key) => {
     if (activeContainer === key) {
       setActiveContainer(null)
       setShowAllItems(false)
+      setCurrentPage(0)
     } else {
       setActiveContainer(key)
       setShowAllItems(false)
+      setCurrentPage(0)
     }
   }
 
@@ -182,6 +192,10 @@ const VisualGuide = ({ onNavigate }) => {
           if (activeContainer !== c.key) return null
           const containerItems = WASTE_DATA.filter(w => w.container === c.key)
           const previewItems = containerItems.slice(0, 4)
+          const itemsPerPage = isMobile ? 2 : 6
+          const totalPages = Math.ceil(containerItems.length / itemsPerPage)
+          const safePage = Math.min(currentPage, Math.max(0, totalPages - 1))
+          const pageItems = containerItems.slice(safePage * itemsPerPage, (safePage + 1) * itemsPerPage)
           return (
             <div key={c.key} className={`bg-surface-container-lowest rounded-lg border-2 ${c.detailBorder} p-space-5 shadow-xl`}>
               <div className="flex flex-col md:flex-row gap-space-5">
@@ -216,7 +230,7 @@ const VisualGuide = ({ onNavigate }) => {
                   {/* All items toggle */}
                   {containerItems.length > 4 && (
                     <button
-                      onClick={() => setShowAllItems(v => !v)}
+                      onClick={() => { setShowAllItems(v => !v); setCurrentPage(0) }}
                       className={`mt-space-4 flex items-center gap-1 text-label-md font-medium ${c.chevronColor} hover:underline`}
                     >
                       <span className="material-symbols-outlined text-[16px]">
@@ -240,32 +254,58 @@ const VisualGuide = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* Full item cards when expanded */}
+              {/* Full item cards when expanded – paginated */}
               {showAllItems && (
                 <div className="mt-space-5 border-t border-border pt-space-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-3">
-                    {WASTE_DATA.filter(w => w.container === c.key).map(item => (
-                      <div key={item.name} className="bg-surface-container rounded-lg p-space-3 border border-border">
-                        <div className="flex items-start gap-2 mb-2">
-                          <span className="material-symbols-outlined text-primary text-[20px] mt-0.5">{item.icon}</span>
-                          <div>
-                            <p className="font-display text-sm font-semibold text-primary leading-snug">{item.name}</p>
-                            <p className="text-label-md text-on-surface-variant">LER {item.lerCode}</p>
+                  <div className="flex items-start gap-2">
+                    {/* Left arrow */}
+                    <button
+                      onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+                      disabled={safePage === 0}
+                      aria-label="Página anterior"
+                      className={`shrink-0 self-center w-9 h-9 rounded-full flex items-center justify-center border border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed ${c.chevronColor} enabled:hover:bg-surface-container`}
+                    >
+                      <span className="material-symbols-outlined text-[20px]">chevron_left</span>
+                    </button>
+                    {/* Cards grid: 3 cols × 2 rows desktop, 1 col × 2 rows mobile */}
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-space-3">
+                      {pageItems.map(item => (
+                        <div key={item.name} className="bg-surface-container rounded-lg p-space-3 border border-border">
+                          <div className="flex items-start gap-2 mb-2">
+                            <span className="material-symbols-outlined text-primary text-[20px] mt-0.5">{item.icon}</span>
+                            <div>
+                              <p className="font-display text-sm font-semibold text-primary leading-snug">{item.name}</p>
+                              <p className="text-label-md text-on-surface-variant">LER {item.lerCode}</p>
+                            </div>
+                          </div>
+                          <p className="text-body-md text-on-surface-variant text-sm mb-2">{item.preparation}</p>
+                          <div className="flex items-start gap-1 bg-idea-yellow/20 rounded-md px-2 py-1">
+                            <span
+                              className="material-symbols-outlined text-yellow-600 text-[14px] mt-0.5"
+                              style={{ fontVariationSettings: "'FILL' 1" }}
+                            >
+                              tips_and_updates
+                            </span>
+                            <p className="text-label-md text-on-secondary-fixed-variant italic">{item.funFact}</p>
                           </div>
                         </div>
-                        <p className="text-body-md text-on-surface-variant text-sm mb-2">{item.preparation}</p>
-                        <div className="flex items-start gap-1 bg-idea-yellow/20 rounded-md px-2 py-1">
-                          <span
-                            className="material-symbols-outlined text-yellow-600 text-[14px] mt-0.5"
-                            style={{ fontVariationSettings: "'FILL' 1" }}
-                          >
-                            tips_and_updates
-                          </span>
-                          <p className="text-label-md text-on-secondary-fixed-variant italic">{item.funFact}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                    {/* Right arrow */}
+                    <button
+                      onClick={() => setCurrentPage(p => Math.min(totalPages - 1, p + 1))}
+                      disabled={safePage === totalPages - 1}
+                      aria-label="Página siguiente"
+                      className={`shrink-0 self-center w-9 h-9 rounded-full flex items-center justify-center border border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed ${c.chevronColor} enabled:hover:bg-surface-container`}
+                    >
+                      <span className="material-symbols-outlined text-[20px]">chevron_right</span>
+                    </button>
                   </div>
+                  {totalPages > 1 && (
+                    <p className="text-center mt-space-3 text-label-md text-on-surface-variant">
+                      {safePage + 1} / {totalPages}
+                    </p>
+                  )}
                 </div>
               )}
             </div>

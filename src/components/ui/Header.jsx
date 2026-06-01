@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { key: 'search',     label: 'Buscador' },
   { key: 'calculator', label: 'Calculadora' },
   { key: 'guide',      label: 'Guía' },
-  { key: 'stats',      label: 'Estadísticas' },
   { key: 'tips',       label: 'Tips' },
 ]
 

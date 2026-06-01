@@ -10,7 +10,6 @@ const WasteSearch  = lazy(() => import('./components/screen/WasteSearch'))
 const ImpactCounter= lazy(() => import('./components/screen/ImpactCounter'))
 const VisualGuide  = lazy(() => import('./components/screen/VisualGuide'))
 const EcoTips      = lazy(() => import('./components/screen/EcoTips'))
-const Stats        = lazy(() => import('./components/screen/Stats'))
 const Legal        = lazy(() => import('./components/screen/Legal'))
 const Privacidad   = lazy(() => import('./components/screen/Privacidad'))
 const Cookies      = lazy(() => import('./components/screen/Cookies'))
@@ -21,7 +20,6 @@ const VIEWS = {
   calculator: ImpactCounter,
   guide:      VisualGuide,
   tips:       EcoTips,
-  stats:      Stats,
   legal:      Legal,
   privacidad: Privacidad,
   cookies:    Cookies,

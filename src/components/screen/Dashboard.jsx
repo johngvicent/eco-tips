@@ -78,14 +78,7 @@ const Dashboard = ({ onNavigate }) => {
             <h3 className="font-display text-headline-sm text-primary">Impacto Comunitario</h3>
             <p className="text-body-md text-secondary">Has contribuido al top 5% de recicladores en tu zona esta semana. ¡Sigue así!</p>
           </div>
-          <Button
-            variant="ghost"
-            onClick={() => onNavigate('stats')}
-            aria-label="Ver estadísticas completas"
-            className="shrink-0 min-w-11 min-h-11 flex items-center justify-center text-outline hover:text-primary transition-base focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 focus-visible:rounded-md"
-          >
-            <span className="material-symbols-outlined">chevron_right</span>
-          </Button>
+
         </article>
       </section>
 
