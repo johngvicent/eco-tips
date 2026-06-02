@@ -27,15 +27,22 @@ const VIEWS = {
 
 function App() {
   const [currentView, setCurrentView] = useState('dashboard')
+  const [navPayload, setNavPayload] = useState(null)
   const { darkMode } = useTheme()
   const CurrentComponent = VIEWS[currentView]
+
+  // navigate(view, payload?) — payload is forwarded to the target screen as a prop
+  const navigate = (view, payload = null) => {
+    setNavPayload(payload)
+    setCurrentView(view)
+  }
 
   return (
     <div className={darkMode ? 'dark' : ''}>
       <div className="min-h-screen bg-background text-text-main flex flex-col">
 
         {/* ── Top Navigation Bar ── */}
-        <Header currentView={currentView} onNavigate={setCurrentView} />
+        <Header currentView={currentView} onNavigate={navigate} />
 
         {/* ── Page Content ── */}
         <main className="flex-1 pb-16 md:pb-0" id="main-content">
@@ -52,17 +59,17 @@ function App() {
                   <span className="material-symbols-outlined text-primary text-4xl animate-spin">recycling</span>
                 </div>
               }>
-                <CurrentComponent onNavigate={setCurrentView} />
+                <CurrentComponent onNavigate={navigate} navPayload={navPayload} />
               </Suspense>
             </motion.div>
           </AnimatePresence>
         </main>
 
         {/* ── Footer ── */}
-        <Footer onNavigate={setCurrentView} />
+        <Footer onNavigate={navigate} />
 
         {/* ── Mobile Bottom Navigation ── */}
-        <BottomNav currentView={currentView} onNavigate={setCurrentView} />
+        <BottomNav currentView={currentView} onNavigate={navigate} />
       </div>
     </div>
   )

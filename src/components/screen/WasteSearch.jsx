@@ -1,19 +1,39 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { WASTE_DATA, CONTAINER_STYLES } from "../../constants"
 import Button from "../ui/Button"
 import SearchBox from "../ui/SearchBox"
 
-const WasteSearch = ({ onNavigate }) => {
+const WasteSearch = ({ onNavigate, navPayload }) => {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState([])
   const [selected, setSelected] = useState(null)
   const [activeTab, setActiveTab] = useState("prep")
   const [listResults, setListResults] = useState(null)
+  // Prevents the search effect from clearing a selection made programmatically
+  const selectingRef = useRef(false)
 
   const normalize = (str) =>
     str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
+  // Pre-select item when coming from Hero search
   useEffect(() => {
+    if (!navPayload?.item) return
+    selectingRef.current = true
+    setSelected(navPayload.item)
+    setResults([])
+    setListResults(null)
+    setQuery(navPayload.item.name)
+    setActiveTab("prep")
+  // navPayload is stable for the lifetime of this mount — run once
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    // Skip effect when query was set by selectItem — avoids clearing the selection
+    if (selectingRef.current) {
+      selectingRef.current = false
+      return
+    }
     const q = normalize(query.trim())
     if (!q) { setResults([]); setListResults(null); return }
     setResults(
@@ -30,6 +50,7 @@ const WasteSearch = ({ onNavigate }) => {
   }, [query])
 
   const selectItem = (item) => {
+    selectingRef.current = true
     setSelected(item)
     setResults([])
     setListResults(null)
@@ -188,7 +209,7 @@ const WasteSearch = ({ onNavigate }) => {
           {/* CTAs */}
           <div className="flex flex-wrap gap-space-3">
             <Button
-              variant="ghost"
+              variant="primary"
               onClick={() => onNavigate("calculator")}
               className="flex items-center gap-2 bg-primary text-on-primary text-button font-display px-6 py-3 rounded-xl hover:opacity-90 transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
             >
@@ -196,7 +217,7 @@ const WasteSearch = ({ onNavigate }) => {
               Calcular impacto
             </Button>
             <Button
-              variant="ghost"
+              variant="secondary"
               onClick={() => onNavigate("guide")}
               className="flex items-center gap-2 border-2 border-primary text-primary text-button font-display px-6 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
             >

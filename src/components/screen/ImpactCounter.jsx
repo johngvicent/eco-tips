@@ -653,7 +653,7 @@ const ImpactCounter = ({ onNavigate }) => {
           <p className="text-body-md text-white/75 mt-1">Descubre el viaje de tus residuos desde la recogida hasta la nueva materia prima.</p>
         </div>
         <Button
-          variant="primary"
+          variant={darkMode ? 'primary-darkmode' : 'primary'}
           onClick={() => onNavigate("guide")}
           aria-label="Ver Guía Visual completa"
           className="relative z-10 shrink-0 bg-white text-primary px-5 py-2.5 rounded-lg text-button font-display hover:opacity-90 transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"

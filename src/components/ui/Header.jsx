@@ -1,5 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContext'
 import Button from './Button'
+import DarkmodeInput from './DarkmodeInput'
 
 const NAV_LINKS = [
   { key: 'dashboard',  label: 'Inicio' },
@@ -10,7 +11,7 @@ const NAV_LINKS = [
 ]
 
 export default function Header({ currentView, onNavigate }) {
-  const { darkMode, toggleDarkMode } = useTheme()
+  const { darkMode } = useTheme()
 
   return (
     <header className="bg-surface sticky top-0 z-50 border-b border-border">
@@ -23,7 +24,7 @@ export default function Header({ currentView, onNavigate }) {
           className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 focus-visible:rounded-sm"
           aria-label="EcoTips — volver al inicio"
         >
-          <img src="/branding/ecologo.svg" alt="EcoTips" className="h-16 w-auto" />
+          <img src={darkMode ? "/branding/ecologo-white.svg" : "/branding/ecologo.svg"} alt="EcoTips" className="h-16 w-auto" />
         </Button>
 
         {/* Desktop nav */}
@@ -50,15 +51,9 @@ export default function Header({ currentView, onNavigate }) {
 
         {/* Actions */}
         <div className="flex items-center gap-space-3">
+          <DarkmodeInput />
           <Button
-            variant="ghost"
-            onClick={toggleDarkMode}
-            aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-            className="p-2 rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-base focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-w-11 min-h-11 flex items-center justify-center"
-          >
-            <span className="material-symbols-outlined">{darkMode ? 'light_mode' : 'dark_mode'}</span>
-          </Button>
-          <Button
+            variant={darkMode ? 'primary-darkmode' : 'primary'}
             onClick={() => onNavigate('search')}
             className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
           >

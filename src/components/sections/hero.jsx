@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { WASTE_DATA } from '../../constants'
+import { useTheme } from '../../contexts/ThemeContext'
 import SearchBox from '../ui/SearchBox'
 
 const normalize = (str) =>
@@ -8,6 +9,7 @@ const normalize = (str) =>
 const Hero = ({ onNavigate }) => {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
+  const { darkMode } = useTheme()
 
   useEffect(() => {
     if (!query.trim()) { setResults([]); return }
@@ -23,16 +25,16 @@ const Hero = ({ onNavigate }) => {
   }, [query])
 
   const handleResultClick = (item) => {
-    setQuery(item.name)
+    setQuery('')
     setResults([])
-    onNavigate('search')
+    onNavigate('search', { item })
   }
 
   return (
     <section
       className="relative flex flex-col md:flex-row gap-space-5 items-center justify-between min-h-screen overflow-hidden"
       style={{
-        backgroundImage: 'url(/img/hero-lightmode.png)',
+        backgroundImage: `url(${darkMode ? '/img/hero-darkmode.png' : '/img/hero-lightmode.png'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
