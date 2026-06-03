@@ -26,3 +26,21 @@ prototype
 *.njsproj
 *.sln
 *.sw?
+
+# -- PovoAgent BEGIN --
+/.opencode/agents/povo.agent.md
+/.opencode/agents/react-architect.agent.md
+/.opencode/agents/react-developer.agent.md
+/.opencode/agents/react-reviewer.agent.md
+/.opencode/skills/analysis/
+/.opencode/skills/design/
+/.opencode/skills/implementation/
+/.opencode/skills/react-feature/
+/.opencode/skills/react-scaffold/
+/.opencode/skills/react-testing/
+/.opencode/skills/testing/
+/AGENTS.md
+/conventions.md
+/opencode.json
+# -- PovoAgent END --
+

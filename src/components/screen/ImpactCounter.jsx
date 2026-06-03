@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useRef, Fragment } from "react"
 import { IMPACT_EQUIVALENTS } from "../../constants"
+import { useTheme } from "../../contexts/ThemeContext"
 import Button from "../ui/Button"
 import { toPng } from "html-to-image"
 import StatsCard from "../ui/StatsCard"
@@ -101,6 +102,7 @@ const computeImpact = (material, size, units) => {
 let _nextId = 1
 
 const ImpactCounter = ({ onNavigate }) => {
+  const { darkMode } = useTheme()
   const [material, setMaterial] = useState(() => localStorage.getItem("ic_material") ?? DEFAULT_MATERIAL)
   const [size,     setSize]     = useState(() => localStorage.getItem("ic_size")     ?? DEFAULT_SIZE)
   const [units,    setUnits]    = useState(DEFAULT_UNITS)

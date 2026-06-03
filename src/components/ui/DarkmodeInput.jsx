@@ -6,7 +6,7 @@ export default function DarkmodeInput() {
 
   return (
     <Button
-      variant={darkMode ? 'secondary-darkmode' : 'secondary'}
+      variant={'ghost'}
       onClick={toggleDarkMode}
       aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
       className="p-2 rounded-full min-w-11 min-h-11 flex items-center justify-center"

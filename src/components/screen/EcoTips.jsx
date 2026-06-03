@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react'
 import { ECO_TIPS } from '../../constants'
 import Button from '../ui/Button'
-import NEWS from '../../data/news.json'
 
 const CATEGORIES = [
   { key: 'Todos',      label: 'Todos',      icon: 'grid_view' },
@@ -24,6 +23,84 @@ const PALETTES = [
   { bg: 'bg-primary',            text: 'text-white',                   sub: 'text-white/80',               icon: 'text-white',                   badge: 'bg-white/10 text-white border-white/20',          blur: 'bg-white/5' },
   { bg: 'bg-secondary-container',text: 'text-on-secondary-fixed-variant', sub: 'text-on-secondary-fixed-variant', icon: 'text-on-secondary-fixed-variant', badge: 'bg-primary/10 text-primary border-primary/20', blur: 'bg-black/5' },
 ]
+
+const FAQ = [
+  {
+    id: 1,
+    question: '¿Se pueden reciclar los envases sucios?',
+    answer: 'No. Los envases deben estar vacíos y limpios para reciclarse correctamente. Un envase con restos de comida puede contaminar todo el lote de reciclaje. Un aclarado rápido es suficiente.',
+  },
+  {
+    id: 2,
+    question: '¿El vidrio se puede reciclar infinitamente?',
+    answer: 'Sí. El vidrio es 100% reciclable y no pierde calidad ni pureza al reprocesarse, por lo que puede reciclarse infinitas veces. Además, reciclar vidrio ahorra hasta un 30% de energía comparado con producirlo desde cero.',
+  },
+  {
+    id: 3,
+    question: '¿Las bolsas compostables van al contenedor marrón?',
+    answer: 'Solo si están certificadas como compostables (norma UNE EN 13432). Las bolsas compostables necesitan condiciones específicas de temperatura y humedad que solo se dan en plantas de tratamiento biológico.',
+  },
+  {
+    id: 4,
+    question: '¿Qué hago con los medicamentos caducados?',
+    answer: 'Llévalos al punto SIGRE de tu farmacia más cercana. Nunca los tires a la basura ni al inodoro. Los medicamentos contienen compuestos químicos que pueden contaminar el agua y el suelo si se gestionan incorrectamente.',
+  },
+  {
+    id: 5,
+    question: '¿Los bricks van al contenedor amarillo?',
+    answer: 'Sí. Los bricks (de leche, zumo, caldo) van al contenedor amarillo. Están compuestos de cartón, plástico y aluminio, y las plantas de reciclaje pueden separar estos materiales para darles una nueva vida.',
+  },
+  {
+    id: 6,
+    question: '¿Las pilas se tiran a la basura normal?',
+    answer: 'Nunca. Las pilas y baterías contienen metales pesados tóxicos (mercurio, cadmio, plomo). Deben depositarse en los contenedores específicos que encontrarás en tiendas, supermercados o puntos limpios.',
+  },
+  {
+    id: 7,
+    question: '¿Los cubiertos de plástico se reciclan?',
+    answer: 'Depende del material. Los cubiertos de plástico duro (PS o poliestireno) suelen tener baja demanda en reciclaje. Si son de un solo uso y están limpios, al contenedor amarillo; como alternativa, opta por cubiertos reutilizables.',
+  },
+  {
+    id: 8,
+    question: '¿Qué significa el código de reciclaje en los envases?',
+    answer: 'El código de reciclaje (triángulo con un número del 1 al 7) identifica el tipo de plástico del envase. Por ejemplo: 1 (PET, botellas de agua), 2 (PEAD, envases de leche), 5 (PP, tapas y pajitas). Esto ayuda a clasificarlos correctamente.',
+  },
+]
+
+function FAQItem({ item }) {
+  const [open, setOpen] = useState(false)
+  const panelId = `faq-panel-${item.id}`
+  const btnId = `faq-btn-${item.id}`
+
+  return (
+    <div className="border border-border rounded-xl overflow-hidden">
+      <button
+        id={btnId}
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen(v => !v)}
+        className="w-full flex items-center justify-between gap-3 px-space-4 py-space-3 bg-surface-container-lowest hover:bg-surface-container transition-bezier min-h-11 focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2"
+      >
+        <span className="font-display text-headline-sm text-primary text-left">{item.question}</span>
+        <span className={`material-symbols-outlined text-on-surface-variant shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}>
+          expand_more
+        </span>
+      </button>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={btnId}
+        style={{ maxHeight: open ? '300px' : '0px' }}
+        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+      >
+        <div className="px-space-4 pb-space-3 border-t border-border pt-space-3 bg-surface">
+          <p className="text-body-md text-on-surface-variant">{item.answer}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 
 const EcoTips = () => {
@@ -143,53 +220,18 @@ const EcoTips = () => {
         </div>
       </section>
 
-      {/* News Section */}
+      {/* FAQ – Preguntas frecuentes sobre reciclaje */}
       <section className="mt-20 border-t border-border pt-20">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-space-6">
-          <div>
-            <h2 className="font-display text-headline-lg text-primary mb-2">Noticias de Impacto</h2>
-            <p className="text-body-md text-on-surface-variant">
-              Avances y descubrimientos globales para un futuro más sostenible.
-            </p>
-          </div>
-          <a href="#" className="text-primary font-button text-label-md hover:underline flex items-center gap-1 mt-4 md:mt-0">
-            Ver todas las noticias{' '}
-            <span className="material-symbols-outlined text-sm">arrow_outward</span>
-          </a>
+        <div className="mb-space-6">
+          <h2 className="font-display text-headline-lg text-primary mb-2">Dudas frecuentes al reciclar</h2>
+          <p className="text-body-md text-on-surface-variant">
+            Respuestas claras a las preguntas más comunes para que reciclar sea más fácil.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-5">
-          {NEWS.map(news => (
-            <article
-              key={news.id}
-              className="bg-surface rounded-lg overflow-hidden border border-border shadow-[0_10px_30px_rgba(0,0,0,0.05)] flex flex-col group"
-            >
-              {/* Placeholder image area */}
-              <div className="h-48 bg-surface-container relative overflow-hidden flex items-center justify-center">
-                <span className="material-symbols-outlined text-outline-variant text-[72px]" style={{ fontVariationSettings: "'FILL' 0" }}>
-                  {news.icon}
-                </span>
-                <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur-sm text-white px-space-2 py-1 rounded text-[10px] font-medium uppercase tracking-widest">
-                  {news.category}
-                </span>
-              </div>
-
-              <div className="p-space-4 flex flex-col grow">
-                <h4 className="font-display text-headline-sm text-text-main mb-space-2 line-clamp-2">
-                  {news.title}
-                </h4>
-                <p className="text-body-md text-on-surface-variant mb-space-4 line-clamp-3">
-                  {news.excerpt}
-                </p>
-                <div className="mt-auto pt-space-3 border-t border-border flex justify-between items-center">
-                  <span className="text-on-surface-variant text-label-md">{news.readTime}</span>
-                  <a href="#" className="text-primary font-bold text-label-md flex items-center gap-1">
-                    Leer más{' '}
-                    <span className="material-symbols-outlined text-sm">chevron_right</span>
-                  </a>
-                </div>
-              </div>
-            </article>
+        <div className="max-w-3xl mx-auto space-y-space-2">
+          {FAQ.map((item) => (
+            <FAQItem key={item.id} item={item} />
           ))}
         </div>
       </section>
