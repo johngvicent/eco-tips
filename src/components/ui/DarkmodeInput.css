@@ -1,0 +1,90 @@
+/* ── DarkmodeInput ── */
+
+.darkmode-toggle {
+  position: relative;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.darkmode-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-surface-container);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.darkmode-toggle:hover::before {
+  opacity: 1;
+}
+
+.darkmode-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.darkmode-toggle:active {
+  transform: scale(0.92);
+  transition-duration: 0.1s;
+}
+
+.darkmode-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Icon container */
+.darkmode-toggle__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.darkmode-toggle:hover .darkmode-toggle__icon {
+  transform: rotate(15deg);
+}
+
+.darkmode-toggle:active .darkmode-toggle__icon {
+  transform: rotate(90deg) scale(0.85);
+  transition-duration: 0.2s;
+}
+
+/* Icon image */
+.darkmode-toggle__img {
+  width: auto;
+  height: 40px;
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.darkmode-toggle:active .darkmode-toggle__img {
+  opacity: 0.7;
+}
+
+/* Ring pulse on click */
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-primary);
+  }
+  100% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
+.darkmode-toggle:active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  animation: ring-pulse 0.4s ease-out forwards;
+  z-index: 0;
+}
