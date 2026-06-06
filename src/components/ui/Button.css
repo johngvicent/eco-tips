@@ -1,0 +1,271 @@
+/* ── Primary button ── */
+
+.btn-primary {
+  width: auto;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-on-primary);
+  cursor: pointer;
+  margin: 20px;
+  padding: 10px 40px;
+  height: 45px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 5px 60px 5px 60px;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-position: 100% 0;
+  transition: all 0.4s ease-in-out ;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-primary:focus {
+  outline: none;
+}
+
+.btn-primary:focus-visible {
+  background-position: 100% 0;
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary.color-primary {
+  background-image: linear-gradient(
+    to right,
+    #006837,
+    #35524A,
+    #006837,
+    #008748,
+    #006837
+  );
+  box-shadow: 0 4px 15px 0 #17a86cbf;
+}
+
+/* ── Secondary button ── */
+
+.btn-secondary {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px 60px 5px 60px;
+  border: none;
+  background: none;
+  margin: 20px;
+  padding: 10px 40px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: var(--color-primary);
+  color: var(--color-primary);
+  background-image: none;
+  z-index: 0;
+}
+
+.btn-secondary::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 5px 60px 5px 60px;
+  transition: all 0.5s;
+  background: linear-gradient(45deg, var(--color-primary) 0%, var(--color-primary-container) 50%, var(--color-secondary) 100%);
+}
+
+.btn-secondary::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  z-index: -1;
+  border-radius: 4px 58px 4px 58px;
+  transition: all 0.5s;
+  background: var(--color-surface);
+}
+
+.btn-secondary:hover {
+  -webkit-text-fill-color: var(--color-on-primary);
+  color: var(--color-on-primary);
+  text-shadow: 0px 0px 0px #ffffffbf;
+}
+
+.btn-secondary:hover::after {
+  left: 100%;
+  top: 100%;
+  bottom: 100%;
+  right: 100%;
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary:focus {
+  outline: none;
+}
+
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Primary button Darkmode ── */
+
+.btn-primary-darkmode {
+  width: auto;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-on-primary);
+  cursor: pointer;
+  margin: 20px;
+  padding: 10px 40px;
+  height: 45px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 5px 60px 5px 60px;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-primary-darkmode:hover {
+  background-position: 100% 0;
+  transition: all 0.4s ease-in-out ;
+  transform: translateY(-2px);
+}
+
+.btn-primary-darkmode:active {
+  transform: scale(0.95);
+}
+
+.btn-primary-darkmode:focus {
+  outline: none;
+}
+
+.btn-primary-darkmode:focus-visible {
+  background-position: 100% 0;
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn-primary-darkmode:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary-darkmode.color-primary {
+  background-image: linear-gradient(
+    to right,
+    #f2f0dd,
+    #F8FAF7,
+    #f2f0dd,
+    #d4fbdf,
+    #f2f0dd
+  );
+  box-shadow: 0 4px 15px 0 rgba(0, 104, 55, 0.502);
+}
+
+/* ── Secondary button Darkmode ── */
+
+.btn-secondary-darkmode {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px 60px 5px 60px;
+  border: none;
+  background: none;
+  margin: 20px;
+  padding: 10px 40px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: var(--color-primary);
+  color: var(--color-primary);
+  background-image: none;
+  z-index: 0;
+}
+
+.btn-secondary-darkmode::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 5px 60px 5px 60px;
+  transition: all 0.5s;
+  background: linear-gradient(45deg, var(--color-secondary-container) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
+}
+
+.btn-secondary-darkmode::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  z-index: -1;
+  border-radius: 4px 58px 4px 58px;
+  transition: all 0.5s;
+  background: var(--color-surface);
+}
+
+.btn-secondary-darkmode:hover {
+  -webkit-text-fill-color: var(--color-on-primary);
+  color: var(--color-on-primary);
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.75);
+}
+
+.btn-secondary-darkmode:hover::after {
+  left: 100%;
+  top: 100%;
+  bottom: 100%;
+  right: 100%;
+}
+
+.btn-secondary-darkmode:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary-darkmode:focus {
+  outline: none;
+}
+
+.btn-secondary-darkmode:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn-secondary-darkmode:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

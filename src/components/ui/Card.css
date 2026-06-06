@@ -1,0 +1,478 @@
+/* ════════════════════════════════════════════════
+   Card – 6 light variants · 6 dark variants
+   ════════════════════════════════════════════════ */
+
+/* ─── Base ─── */
+
+.card {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Number indicator ─── */
+
+.card__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+/* ─── Label ─── */
+
+.card__label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  align-self: flex-start;
+  backdrop-filter: blur(4px);
+}
+
+/* ─── Title ─── */
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin: 10px 0;
+}
+
+/* ─── Body ─── */
+
+.card__body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ─── Badges wrapper ─── */
+
+.card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+/* ─── Badge ─── */
+
+.card__badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* ════════════════════════════════════════════════
+   VARIANT 01 – Surface Light / Surface Dark
+   ════════════════════════════════════════════════ */
+
+.card--variant-01 {
+  background: linear-gradient(45deg, #DFE4DD 0%, #E5E9E2 50%, #F1F5EE 100%);
+  color: #3F4940;
+}
+
+.card--variant-01 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+}
+
+.card--variant-01 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+}
+
+.card--variant-01 .card__title {
+  color: var(--color-primary);
+}
+
+.card--variant-01 .card__body {
+  color: #3F4940;
+}
+
+.card--variant-01 .card__badge {
+  background: rgba(0, 77, 39, 0.1);
+  border-color: rgba(0, 77, 39, 0.2);
+  color: var(--color-primary);
+}
+
+.dark .card--variant-01 {
+  background: linear-gradient(45deg, #2F342F 0%, #242924 57%, #141914 100%);
+  color: rgba(131, 217, 156, 0.8);
+  outline: 1px solid #2F342F;
+  outline-offset: -1px;
+}
+
+.dark .card--variant-01 .card__number {
+  background: rgba(255, 255, 255, 0.3);
+  color: #83D99C;
+}
+
+.dark .card--variant-01 .card__label {
+  background: rgba(255, 255, 255, 0.3);
+  color: #83D99C;
+}
+
+.dark .card--variant-01 .card__title {
+  color: #83D99C;
+}
+
+.dark .card--variant-01 .card__body {
+  color: rgba(131, 217, 156, 0.8);
+}
+
+.dark .card--variant-01 .card__badge {
+  background: rgba(131, 217, 156, 0.1);
+  border-color: rgba(131, 217, 156, 0.2);
+  color: #83D99C;
+}
+
+/* ════════════════════════════════════════════════
+   VARIANT 02 – Mint Green / Olive Green
+   ════════════════════════════════════════════════ */
+
+.card--variant-02 {
+  background: linear-gradient(45deg, #D8E2DC 38%, #C8DACB 100%);
+  color: #3F4940;
+}
+
+.card--variant-02 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+}
+
+.card--variant-02 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+}
+
+.card--variant-02 .card__title {
+  color: var(--color-primary);
+}
+
+.card--variant-02 .card__body {
+  color: #3F4940;
+}
+
+.card--variant-02 .card__badge {
+  background: rgba(0, 77, 39, 0.1);
+  border-color: rgba(0, 77, 39, 0.2);
+  color: var(--color-primary);
+}
+
+.dark .card--variant-02 {
+  background: linear-gradient(45deg, #3A4A42 57%, #2F342F 100%);
+  color: rgba(131, 217, 156, 0.8);
+}
+
+.dark .card--variant-02 .card__number {
+  background: rgba(255, 255, 255, 0.3);
+  color: #83D99C;
+}
+
+.dark .card--variant-02 .card__label {
+  background: rgba(255, 255, 255, 0.3);
+  color: #83D99C;
+}
+
+.dark .card--variant-02 .card__title {
+  color: #83D99C;
+}
+
+.dark .card--variant-02 .card__body {
+  color: rgba(131, 217, 156, 0.8);
+}
+
+.dark .card--variant-02 .card__badge {
+  background: rgba(131, 217, 156, 0.1);
+  border-color: rgba(131, 217, 156, 0.2);
+  color: #83D99C;
+}
+
+/* ════════════════════════════════════════════════
+   VARIANT 03 – Idea Yellow / Idea Light Bulb
+   ════════════════════════════════════════════════ */
+
+.card--variant-03 {
+  background: #F4D35E;
+  color: #2F4C44;
+}
+
+.card--variant-03 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+}
+
+.card--variant-03 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+}
+
+.card--variant-03 .card__title {
+  color: var(--color-primary);
+}
+
+.card--variant-03 .card__body {
+  color: #2F4C44;
+}
+
+.card--variant-03 .card__badge {
+  background: rgba(0, 77, 39, 0.1);
+  border-color: rgba(0, 77, 39, 0.2);
+  color: var(--color-primary);
+}
+
+.dark .card--variant-03 {
+  background: #C9A830;
+  color: rgba(2, 32, 26, 0.8);
+}
+
+.dark .card--variant-03 .card__number {
+  background: rgba(255, 255, 255, 0.3);
+  color: #02201A;
+}
+
+.dark .card--variant-03 .card__label {
+  background: rgba(255, 255, 255, 0.3);
+  color: #02201A;
+}
+
+.dark .card--variant-03 .card__title {
+  color: #02201A;
+}
+
+.dark .card--variant-03 .card__body {
+  color: rgba(2, 32, 26, 0.8);
+}
+
+.dark .card--variant-03 .card__badge {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #02201A;
+}
+
+/* ════════════════════════════════════════════════
+   VARIANT 04 – Secondary Container / Secondary Dark Container
+   ════════════════════════════════════════════════ */
+
+.card--variant-04 {
+  background: linear-gradient(45deg, #C9EADF 0%, #C9EADF 50%, #ADCDC3 100%);
+  color: rgba(63, 73, 64, 0.8);
+}
+
+.card--variant-04 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: #3F4940;
+}
+
+.card--variant-04 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: #3F4940;
+}
+
+.card--variant-04 .card__title {
+  color: #2F4C44;
+}
+
+.card--variant-04 .card__body {
+  color: rgba(63, 73, 64, 0.8);
+}
+
+.card--variant-04 .card__badge {
+  background: rgba(47, 76, 68, 0.1);
+  border-color: rgba(47, 76, 68, 0.2);
+  color: #2F4C44;
+}
+
+.dark .card--variant-04 {
+  background: linear-gradient(45deg, #DFE4DD 0%, #E5E9E2 50%, #F1F5EE 100%);
+  color: #47645C;
+}
+
+.dark .card--variant-04 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: #004D27;
+}
+
+.dark .card--variant-04 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: #004D27;
+}
+
+.dark .card--variant-04 .card__title {
+  color: #004D27;
+}
+
+.dark .card--variant-04 .card__body {
+  color: #47645C;
+}
+
+.dark .card--variant-04 .card__badge {
+  background: rgba(0, 77, 39, 0.1);
+  border-color: rgba(0, 77, 39, 0.2);
+  color: #004D27;
+}
+
+/* ════════════════════════════════════════════════
+   VARIANT 05 – Simple Light Surface / Simple Dark Surface
+   ════════════════════════════════════════════════ */
+
+.card--variant-05 {
+  background: #FFFFFF;
+  color: #4D6A62;
+  outline: 1px solid #E0E7E1;
+  outline-offset: -1px;
+}
+
+.card--variant-05 .card__number {
+  background: rgba(0, 77, 39, 0.1);
+  color: var(--color-primary);
+}
+
+.card--variant-05 .card__label {
+  background: rgba(0, 77, 39, 0.1);
+  border: 1px solid rgba(0, 77, 39, 0.2);
+  color: var(--color-primary);
+}
+
+.card--variant-05 .card__title {
+  color: var(--color-primary);
+}
+
+.card--variant-05 .card__body {
+  color: #4D6A62;
+}
+
+.card--variant-05 .card__badge {
+  background: rgba(0, 77, 39, 0.1);
+  border-color: rgba(0, 77, 39, 0.2);
+  color: var(--color-primary);
+}
+
+.dark .card--variant-05 {
+  background: #0B0F0B;
+  color: #ADCDC3;
+  outline: 1px solid #2F342F;
+  outline-offset: -1px;
+}
+
+.dark .card--variant-05 .card__number {
+  background: rgba(255, 255, 255, 0.3);
+  color: #83D99C;
+}
+
+.dark .card--variant-05 .card__label {
+  background: rgba(255, 255, 255, 0.3);
+  color: #83D99C;
+}
+
+.dark .card--variant-05 .card__title {
+  color: #83D99C;
+}
+
+.dark .card--variant-05 .card__body {
+  color: #ADCDC3;
+}
+
+.dark .card--variant-05 .card__badge {
+  background: rgba(131, 217, 156, 0.1);
+  border-color: rgba(131, 217, 156, 0.2);
+  color: #83D99C;
+}
+
+/* ════════════════════════════════════════════════
+   VARIANT 06 – Primary Color Card / Secondary Color Card
+   ════════════════════════════════════════════════ */
+
+.card--variant-06 {
+  background: linear-gradient(45deg, #004D27 0%, #00522A 55%, #35524A 100%);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card--variant-06 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: #3F4940;
+}
+
+.card--variant-06 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: #3F4940;
+}
+
+.card--variant-06 .card__title {
+  color: #FFFFFF;
+}
+
+.card--variant-06 .card__body {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card--variant-06 .card__badge {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.dark .card--variant-06 {
+  background: linear-gradient(45deg, #35524A 23%, #2F4C44 62%, #2F4C44 100%);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .card--variant-06 .card__number {
+  background: rgba(255, 255, 255, 0.8);
+  color: #3F4940;
+}
+
+.dark .card--variant-06 .card__label {
+  background: rgba(255, 255, 255, 0.8);
+  color: #3F4940;
+}
+
+.dark .card--variant-06 .card__title {
+  color: #FFFFFF;
+}
+
+.dark .card--variant-06 .card__body {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .card--variant-06 .card__badge {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}

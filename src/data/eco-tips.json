@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "title": "Instala aireadores en tus grifos",
+    "body": "Reduce el consumo de agua hasta en un 50% sin perder presión. Es una inversión mínima con un impacto inmediato en tu factura y el medioambiente.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "featured": true,
+    "icon": "faucet"
+  },
+  {
+    "id": 2,
+    "title": "Lava con agua fría",
+    "body": "El 90% de la energía de una lavadora se usa para calentar el agua. Cambia a ciclos fríos y ahorra hasta 500 kWh al año.",
+    "category": "energía",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "local_laundry_service"
+  },
+  {
+    "id": 3,
+    "title": "Composta en casa",
+    "body": "Transforma tus restos de comida en abono rico para tus plantas y reduce tu basura orgánica un 40%.",
+    "category": "residuos",
+    "difficulty": "Media",
+    "impact": "Muy alto",
+    "icon": "compost"
+  },
+  {
+    "id": 4,
+    "title": "La regla de los 2 km",
+    "body": "Si tu destino está a menos de 2 km, elige caminar o usar bicicleta. Mejora tu salud y la calidad del aire.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "pedal_bike"
+  },
+  {
+    "id": 5,
+    "title": "Duchas de 5 minutos",
+    "body": "Usa una canción como temporizador. Cada minuto menos ahorra hasta 20 litros de agua.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "shower"
+  },
+  {
+    "id": 6,
+    "title": "Corta el consumo vampiro",
+    "body": "Usa regletas con interruptor para apagar dispositivos en standby. Pueden suponer un 10% de tu factura eléctrica.",
+    "category": "energía",
+    "difficulty": "Media",
+    "impact": "Medio",
+    "icon": "power_off"
+  },
+  {
+    "id": 7,
+    "title": "Bolsas de tela siempre listas",
+    "body": "Lleva siempre una bolsa plegable en tu mochila para evitar comprar bolsas de plástico de un solo uso.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "shopping_bag"
+  },
+  {
+    "id": 8,
+    "title": "Reparar antes que comprar",
+    "body": "Busca tutoriales antes de tirar algo. El producto más sostenible es el que ya tienes.",
+    "category": "residuos",
+    "difficulty": "Media",
+    "impact": "Muy alto",
+    "icon": "build"
+  },
+  {
+    "id": 9,
+    "title": "Recarga en horas valle",
+    "body": "Programa la carga de tus dispositivos entre las 00:00 y las 08:00. La energía es más barata y más renovable.",
+    "category": "energía",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "schedule"
+  },
+  {
+    "id": 10,
+    "title": "Transporte público inteligente",
+    "body": "Combina bicicleta + metro para trayectos de más de 5 km. Reduces tu huella de carbono hasta un 75%.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Muy alto",
+    "icon": "directions_transit"
+  },
+  {
+    "id": 11,
+    "title": "Recoge el agua de la ducha fría",
+    "body": "Coloca un cubo mientras esperas que salga el agua caliente. Esos litros sirven para regar o limpiar.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "water_drop"
+  },
+  {
+    "id": 12,
+    "title": "Iluminación LED en todo el hogar",
+    "body": "Sustituir todas las bombillas incandescentes por LED puede ahorrar hasta 700 kWh al año.",
+    "category": "energía",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "lightbulb"
+  }
+]

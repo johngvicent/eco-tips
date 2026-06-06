@@ -1,135 +1,143 @@
-# 🌱 EcoTips - Mini-Guía Interactiva de Reciclaje
+# EcoTips
 
-Una aplicación web moderna y educativa que ayuda a los usuarios a aprender sobre reciclaje y calcular su impacto ambiental de manera interactiva.
+EcoTips es una aplicación web educativa orientada a la correcta separación de residuos domésticos y a la divulgación de hábitos sostenibles. El proyecto reúne en una sola experiencia un buscador de residuos, una calculadora de impacto ambiental, una guía visual de contenedores y un espacio editorial de eco-tips.
 
-## ✨ Características Principales
+Proyecto creado por John Vicent.
 
-### 🔍 Buscador de Residuos
-- Búsqueda en tiempo real de objetos
-- Indicación visual del contenedor correcto (Azul, Verde, Amarillo, Gris, Marrón)
-- Consejos personalizados para cada tipo de residuo
+## Visión general
 
-### 📊 Calculadora de Impacto Ambiental
-- Selección interactiva de materiales reciclados
-- Cálculo automático de energía, agua y CO₂ ahorrados
-- Animaciones visuales de progreso
+La aplicación funciona como una single-page application construida con React. La navegación entre módulos se resuelve en cliente, sin backend ni autenticación, y el contenido principal se sirve desde archivos JSON locales. Esto permite una experiencia rápida, directa y sencilla de mantener.
 
-### 🎯 Guía Visual Interactiva
-- Contenedores coloreados con información detallada
-- Lista completa de qué va en cada contenedor
-- Interfaz intuitiva con animaciones
+EcoTips está pensada para dos usos complementarios:
 
-### 💡 Eco-Tips Aleatorios
-- Consejos diarios para vivir de manera sostenible
-- Generación aleatoria de recomendaciones prácticas
-- Temas variados: energía, agua, plástico, transporte
+- orientar al usuario sobre dónde depositar correctamente un residuo concreto;
+- explicar cómo preparar ese residuo antes de reciclarlo;
+- visualizar de forma comprensible el impacto acumulado del reciclaje por material;
+- ofrecer contenido divulgativo para reforzar hábitos sostenibles.
 
-### 📈 Gráficos Comparativos
-- Visualización del consumo de agua en actividades cotidianas
-- Comparación entre ducha vs bañera
-- Consejos prácticos para ahorrar recursos
+## Comportamiento actual del producto
 
-### 🌙 Modo Oscuro "Energy Saver"
-- Ahorro de energía en pantallas OLED
-- Tema automático basado en preferencias del sistema
-- Transiciones suaves entre modos
+### Inicio
 
-## 🛠️ Tecnologías Utilizadas
+La pantalla principal actúa como panel de bienvenida y descubrimiento. Presenta un eco-tip del día basado en la fecha actual, tarjetas informativas de impacto y accesos directos a los módulos más útiles de la aplicación.
 
-- **React 19** - Framework moderno para interfaces de usuario
-- **Vite** - Build tool ultrarrápido
-- **Tailwind CSS** - Framework CSS utility-first
-- **Framer Motion** - Animaciones y transiciones fluidas
-- **Recharts** - Gráficos interactivos
-- **React Icons** - Iconografía consistente
-- **Context API** - Gestión de estado global (tema oscuro)
+### Buscador de residuos
 
-## 🚀 Instalación y Uso
+El buscador permite localizar residuos por nombre, ejemplos de uso, contenedor o código LER. Cuando existen varias coincidencias, la interfaz muestra una lista de desambiguación para que el usuario seleccione el elemento correcto.
 
-### Prerrequisitos
-- Node.js 18+
-- npm o yarn
+Cada resultado muestra:
 
-### Instalación
+- el contenedor recomendado;
+- la categoría y el código LER asociado;
+- ejemplos prácticos del residuo;
+- instrucciones de preparación previa;
+- un eco-tip y un dato divulgativo adicional.
+
+Desde esta vista se puede continuar directamente hacia la calculadora de impacto o hacia la guía visual de contenedores.
+
+### Calculadora de impacto
+
+La calculadora permite construir un cálculo acumulado a partir de varias entradas. El flujo de uso se basa en tres pasos: elegir material, definir tamaño y ajustar cantidad. Una vez añadidos los elementos al cálculo, la interfaz muestra:
+
+- energía ahorrada;
+- agua conservada;
+- CO2 no emitido;
+- desglose por material en un gráfico de anillo;
+- equivalencias visuales para contextualizar el resultado;
+- una tarjeta resumida que puede compartirse o descargarse como imagen.
+
+La aplicación conserva en `localStorage` el último material y tamaño seleccionados, además de la preferencia de tema.
+
+### Guía visual de contenedores
+
+La guía visual organiza la información por contenedor y facilita una consulta más exploratoria. Actualmente cubre las familias principales de separación doméstica y permite desplegar el detalle de cada una con ejemplos, advertencias y consejos ecológicos.
+
+La experiencia incluye:
+
+- vista resumida por contenedor;
+- detalle expandible con recomendaciones específicas;
+- listado ampliado de residuos por contenedor;
+- paginación adaptada a móvil y escritorio.
+
+### Eco-tips y contenido editorial
+
+EcoTips incorpora una sección editorial con consejos prácticos filtrables por categoría. El usuario puede generar nuevos tips destacados y consultar una parrilla de noticias o piezas informativas relacionadas con sostenibilidad.
+
+### Navegación, tema y páginas auxiliares
+
+La aplicación ofrece navegación principal en cabecera y navegación inferior en móvil. Incluye modo oscuro con persistencia local, transiciones animadas entre vistas y páginas auxiliares de aviso legal, privacidad y cookies accesibles desde el pie de página.
+
+## Cómo usar el proyecto
+
+### Requisitos
+
+- Node.js LTS
+- npm
+
+### Puesta en marcha local
+
 ```bash
-# Clonar el repositorio
-git clone [url-del-repo]
-
-# Instalar dependencias
 npm install
-
-# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-### Build para Producción
-```bash
-# Crear build optimizado
-npm run build
+Después, abre en el navegador la URL local que indique Vite, normalmente `http://localhost:5173`.
 
-# Vista previa del build
-npm run preview
-```
+### Scripts disponibles
 
-## 📱 Características Responsive
+| Script | Descripción |
+| --- | --- |
+| `npm run dev` | Inicia el servidor de desarrollo. |
+| `npm run build` | Genera la versión optimizada para producción. |
+| `npm run preview` | Sirve localmente la build generada. |
+| `npm run lint` | Ejecuta la validación estática con ESLint. |
 
-- Diseño mobile-first
-- Optimizado para todos los tamaños de pantalla
-- Navegación intuitiva en dispositivos móviles
+## Flujos de uso recomendados
 
-## 🎨 Diseño y UX
+### Para clasificar un residuo
 
-### Paleta de Colores
-- Verde principal (#10B981) - Sostenibilidad
-- Azul (#3B82F6) - Agua y reciclaje
-- Amarillo (#F59E0B) - Energía
-- Colores pastel para mejor legibilidad
+1. Accede al buscador.
+2. Escribe el nombre del objeto, un ejemplo relacionado o su código LER.
+3. Selecciona la coincidencia adecuada si hay varias opciones.
+4. Revisa el contenedor, la preparación previa y el eco-tip asociado.
 
-### Tipografía
-- Montserrat - Fuente moderna y legible
-- Jerarquía clara de tamaños y pesos
+### Para estimar impacto ambiental
 
-### Animaciones
-- Micro-interacciones para feedback visual
-- Transiciones suaves entre estados
-- Animaciones de entrada escalonadas
+1. Abre la calculadora.
+2. Elige material, tamaño y cantidad.
+3. Añade una o varias entradas al cálculo.
+4. Consulta el impacto acumulado y exporta la tarjeta resumen si lo necesitas.
 
-## 📊 Datos y Precisión
+### Para aprender por categorías de reciclaje
 
-Los cálculos ambientales están basados en:
-- Datos del Ministerio de Medio Ambiente español
-- Estudios de la UE sobre reciclaje
-- Investigaciones científicas sobre huella de carbono
+1. Entra en la guía visual.
+2. Selecciona un contenedor.
+3. Revisa qué depositar, qué evitar y los consejos específicos de esa categoría.
 
-## 🌍 Impacto Educativo
+## Stack técnico
 
-Esta aplicación busca:
-- Educar sobre la importancia del reciclaje correcto
-- Motivar cambios de hábitos sostenibles
-- Proporcionar herramientas prácticas para la vida diaria
-- Crear conciencia sobre el consumo de recursos
+- React 19
+- Vite con Rolldown
+- Tailwind CSS 4
+- Framer Motion
+- html-to-image
+- ESLint 9
 
-## 🤝 Contribución
+## Estructura relevante del repositorio
 
-¡Las contribuciones son bienvenidas! Para contribuir:
+- `src/components/screen`: pantallas principales de la aplicación.
+- `src/components/ui`: piezas reutilizables de interfaz.
+- `src/data`: catálogos locales de residuos, equivalencias y contenido editorial.
+- `src/contexts`: estado global compartido, como el tema visual.
+- `public/branding` y `public/img`: identidad visual e imágenes de soporte.
+- `prototype`: versiones HTML previas y documentación de exploración.
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+## Mantenimiento de contenidos
 
-## 📄 Licencia
+La información funcional del proyecto depende principalmente de los archivos JSON incluidos en `src/data` y de su agregación en `src/constants.js`. Para ampliar el catálogo de residuos, ajustar equivalencias o actualizar el contenido editorial, el punto de entrada recomendado es esa capa de datos.
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+Al no existir backend, cualquier cambio funcional o de contenido se distribuye con la build del frontend.
 
-## 🙏 Agradecimientos
+## Autor
 
-- Iconos por React Icons
-- Animaciones por Framer Motion
-- Gráficos por Recharts
-- Inspiración de iniciativas ambientales globales
-
----
-
-**Hecho con ❤️ para el medio ambiente** 🌱
+John Vicent

@@ -1,0 +1,7 @@
+{
+  "vidrio":   { "energia": 1.0, "agua": 2.0,  "co2": 0.31, "label": "Vidrio",   "icon": "wine_bar" },
+  "papel":    { "energia": 0.5, "agua": 10.0, "co2": 0.90, "label": "Papel",    "icon": "description" },
+  "plastico": { "energia": 2.0, "agua": 5.0,  "co2": 1.56, "label": "Plástico", "icon": "water_full" },
+  "metal":    { "energia": 3.0, "agua": 1.0,  "co2": 2.10, "label": "Metal",    "icon": "hardware" },
+  "organico": { "energia": 0.2, "agua": 0.5,  "co2": 0.12, "label": "Orgánico", "icon": "compost" }
+}
