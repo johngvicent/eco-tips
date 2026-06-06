@@ -50,7 +50,7 @@
     #008748,
     #006837
   );
-  box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+  box-shadow: 0 4px 15px 0 #17a86cbf;
 }
 
 /* ── Secondary button ── */
@@ -181,12 +181,12 @@
   background-image: linear-gradient(
     to right,
     #f2f0dd,
-    #ffffffbf,
+    #F8FAF7,
     #f2f0dd,
-    #a1d0ba,
+    #d4fbdf,
     #f2f0dd
   );
-  box-shadow: 0 4px 15px 0 rgba(0, 104, 55, 0.5);
+  box-shadow: 0 4px 15px 0 rgba(0, 104, 55, 0.502);
 }
 
 /* ── Secondary button Darkmode ── */
