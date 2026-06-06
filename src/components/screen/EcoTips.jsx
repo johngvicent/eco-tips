@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { ECO_TIPS } from '../../constants'
 import Button from '../ui/Button'
+import Card from '../ui/Card'
 
 const CATEGORIES = [
   { key: 'Todos',      label: 'Todos',      icon: 'grid_view' },
@@ -14,15 +15,8 @@ const CAT_LABEL = {
   agua: 'AGUA', energía: 'ENERGÍA', residuos: 'RESIDUOS', transporte: 'TRANSPORTE',
 }
 
-// Rotating palettes for the featured card
-const PALETTES = [
-  { bg: 'bg-idea-yellow',        text: 'text-primary',                 sub: 'text-primary/80',             icon: 'text-primary',                 badge: 'bg-primary/10 text-primary border-primary/20',    blur: 'bg-black/5' },
-  { bg: 'bg-mint-green',         text: 'text-primary',                 sub: 'text-primary/80',             icon: 'text-primary',                 badge: 'bg-primary/10 text-primary border-primary/20',    blur: 'bg-black/5' },
-  { bg: 'bg-surface-container',  text: 'text-primary',                 sub: 'text-on-surface-variant',     icon: 'text-primary',                 badge: 'bg-primary/10 text-primary border-primary/20',    blur: 'bg-black/5' },
-  { bg: 'bg-surface-variant',    text: 'text-primary',                 sub: 'text-on-surface-variant',     icon: 'text-primary',                 badge: 'bg-primary/10 text-primary border-primary/20',    blur: 'bg-black/5' },
-  { bg: 'bg-primary',            text: 'text-white',                   sub: 'text-white/80',               icon: 'text-white',                   badge: 'bg-white/10 text-white border-white/20',          blur: 'bg-white/5' },
-  { bg: 'bg-secondary-container',text: 'text-on-secondary-fixed-variant', sub: 'text-on-secondary-fixed-variant', icon: 'text-on-secondary-fixed-variant', badge: 'bg-primary/10 text-primary border-primary/20', blur: 'bg-black/5' },
-]
+// Card variant cycle for the featured card (maps to Card.jsx variant prop)
+const VARIANT_CYCLE = ['03', '02', '01', '05', '06', '04']
 
 const FAQ = [
   {
@@ -106,7 +100,7 @@ function FAQItem({ item }) {
 const EcoTips = () => {
   const [activeCategory, setActiveCategory] = useState('Todos')
   const [currentTip, setCurrentTip] = useState(ECO_TIPS.find(t => t.featured) ?? ECO_TIPS[0])
-  const [paletteIdx, setPaletteIdx] = useState(0)
+  const [variantIdx, setVariantIdx] = useState(0)
   const [fading, setFading] = useState(false)
 
   const handleGenerate = useCallback(() => {
@@ -121,12 +115,10 @@ const EcoTips = () => {
         next = pool[Math.floor(Math.random() * pool.length)]
       } while (next.id === currentTip.id && pool.length > 1)
       setCurrentTip(next)
-      setPaletteIdx(p => (p + 1) % PALETTES.length)
+      setVariantIdx(p => (p + 1) % VARIANT_CYCLE.length)
       setFading(false)
     }, 150)
   }, [activeCategory, currentTip.id])
-
-  const palette = PALETTES[paletteIdx]
 
   return (
     <div className="max-w-safe-width mx-auto px-space-4 py-space-6">
@@ -168,9 +160,15 @@ const EcoTips = () => {
 
       {/* Featured Tip Card */}
       <section className="max-w-4xl mx-auto mb-space-6">
-        <div className={`${palette.bg} rounded-lg p-space-6 flex flex-col justify-between shadow-[0_10px_30px_rgba(0,0,0,0.05)] relative overflow-hidden group min-h-87.5 transition-all duration-300`}>
-
-          {/* Content */}
+        <Card
+          variant={VARIANT_CYCLE[variantIdx]}
+          label={CAT_LABEL[currentTip.category] ?? 'DESTACADO'}
+          title={currentTip.title}
+          body={currentTip.body}
+          badges={[`Dificultad: ${currentTip.difficulty}`, `Impacto: ${currentTip.impact}`]}
+          className="min-h-87.5 group"
+        >
+          {/* Animated icon row */}
           <div
             className="relative z-10"
             style={{
@@ -179,33 +177,16 @@ const EcoTips = () => {
               transition: 'opacity 0.15s ease, transform 0.15s ease',
             }}
           >
-            <div className="flex justify-between items-start mb-space-5">
-              <span className={`bg-white/30 backdrop-blur-md px-space-3 py-1 rounded-md text-label-md font-bold uppercase tracking-wider ${palette.text}`}>
-                {CAT_LABEL[currentTip.category] ?? 'DESTACADO'}
-              </span>
-              <span className={`material-symbols-outlined text-5xl ${palette.icon}`} style={{ fontVariationSettings: "'FILL' 1" }}>
+            <div className="flex justify-end items-start">
+              <span className="material-symbols-outlined text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>
                 {currentTip.icon}
-              </span>
-            </div>
-            <h3 className={`font-display text-headline-lg mb-space-4 ${palette.text}`}>
-              {currentTip.title}
-            </h3>
-            <p className={`text-body-lg mb-space-6 max-w-2xl ${palette.sub}`}>
-              {currentTip.body}
-            </p>
-            <div className="flex flex-wrap items-center gap-space-3">
-              <span className={`px-space-3 py-1 rounded-md text-label-md font-medium border ${palette.badge}`}>
-                Dificultad: {currentTip.difficulty}
-              </span>
-              <span className={`px-space-3 py-1 rounded-md text-label-md font-medium border ${palette.badge}`}>
-                Impacto: {currentTip.impact}
               </span>
             </div>
           </div>
 
           {/* Abstract blur decoration */}
-          <div className={`absolute -right-20 -bottom-20 w-64 h-64 ${palette.blur} rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700`} />
-        </div>
+          <div className="absolute -right-20 -bottom-20 w-64 h-64 rounded-full blur-3xl bg-black/5 group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+        </Card>
 
         {/* Generate button */}
         <div className="mt-space-5 flex justify-center">
