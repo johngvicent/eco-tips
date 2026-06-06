@@ -1,5 +1,6 @@
 import { ECO_TIPS } from '../../constants'
 import Button from '../ui/Button'
+import Card from '../ui/Card'
 import Hero from '../sections/hero'
 
 // Randomly pick a daily tip seeded by today's date
@@ -9,9 +10,9 @@ const getDailyTip = () => {
 }
 
 const KPI_CARDS = [
-  { icon: 'co2',        value: '1.2 t',  label: 'CO₂ evitado este mes',   bg: 'bg-mint-green',           text: 'text-primary' },
-  { icon: 'water_drop', value: '850 L',  label: 'Agua conservada',         bg: 'bg-surface-container-high', text: 'text-primary' },
-  { icon: 'bolt',       value: '420 kWh',label: 'Energía ahorrada',        bg: 'bg-surface-container-high', text: 'text-primary' },
+  { icon: 'co2',        value: 'Emisiones evitadas',  label: 'A nivel individual, el reciclaje constante mitiga un promedio global de 100 kilos de CO₂ por persona al año.',   bg: 'bg-mint-green',           text: 'text-primary' },
+  { icon: 'water_drop', value: 'Agua conservada',  label: 'Al reciclar de manera constante, una sola persona ahorra estimadamente entre 2.000 y 3.500 litros de agua al año.',         bg: 'bg-surface-container-high', text: 'text-primary' },
+  { icon: 'bolt',       value: 'Energía ahorrada',label: 'Se estima un ahorro entre 250 y 400 kWh de energía al año.',        bg: 'bg-surface-container-high', text: 'text-primary' },
 ]
 
 const LEARN_CARDS = [
@@ -45,41 +46,67 @@ const Dashboard = ({ onNavigate }) => {
       <section aria-label="Estadísticas de impacto" className="grid grid-cols-1 md:grid-cols-4 gap-space-4">
 
         {/* Daily Tip — spans 2 cols */}
-        <article className="md:col-span-2 bg-idea-yellow p-space-4 rounded-lg flex flex-col justify-between custom-shadow transition-bezier hover:-translate-y-1">
-          <div className="space-y-space-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>lightbulb</span>
-              <span className="text-label-md text-primary uppercase tracking-wider font-bold">Eco-Tip del día</span>
-            </div>
-            <h2 className="font-display text-headline-md text-primary">{dailyTip.title}</h2>
-            <p className="text-body-md text-on-secondary-fixed-variant">{dailyTip.body}</p>
-          </div>
-          <div className="mt-space-4 flex gap-space-2 flex-wrap">
-            <span className="bg-primary/10 px-3 py-1 rounded-full text-xs font-bold text-primary capitalize">{dailyTip.category}</span>
-            <span className="bg-primary/10 px-3 py-1 rounded-full text-xs font-bold text-primary">Impacto: {dailyTip.impact}</span>
-          </div>
-        </article>
+        <Card
+          variant="03"
+          label="Eco-Tip del día"
+          title={dailyTip.title}
+          body={dailyTip.body}
+          badges={[dailyTip.category, `Impacto: ${dailyTip.impact}`]}
+          className="md:col-span-2"
+        >
+          <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>lightbulb</span>
+        </Card>
 
         {/* KPI Cards */}
-        {KPI_CARDS.map(({ icon, value, label, bg, text }) => (
-          <article key={label} className={`${bg} p-space-4 rounded-lg flex flex-col justify-center items-center text-center custom-shadow transition-bezier hover:-translate-y-1`}>
-            <span className={`material-symbols-outlined text-4xl mb-2 ${text}`} style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>
-            <span className={`font-display text-headline-lg ${text}`}>{value}</span>
-            <span className="text-label-md text-on-secondary-container">{label}</span>
-          </article>
-        ))}
+        {KPI_CARDS.map(({ icon, value, label, bg }) => {
+          const variant = bg === 'bg-mint-green' ? '02' : '01'
+          return (
+            <Card
+              key={label}
+              variant={variant}
+              title={value}
+              body={label}
+              className="items-center text-center"
+            >
+              <span className="material-symbols-outlined text-4xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>
+            </Card>
+          )
+        })}
 
         {/* Community banner — spans 3 cols */}
-        <article className="md:col-span-3 bg-surface-container-lowest p-space-4 rounded-lg border border-border flex items-center gap-space-4 custom-shadow">
-          <div className="h-14 w-14 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
-            <span className="material-symbols-outlined text-primary text-3xl">groups</span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-display text-headline-sm text-primary">Impacto Comunitario</h3>
-            <p className="text-body-md text-secondary">Has contribuido al top 5% de recicladores en tu zona esta semana. ¡Sigue así!</p>
-          </div>
+        <Card
+          variant="05"
+          className="md:col-span-3 !p-0"
+        >
+          <div className="flex flex-col md:flex-row items-center gap-space-4 p-0">
+            {/* Image column */}
+            <img
+              src="/img/reciclaje.png"
+              alt="Reciclaje comunitario"
+              className="w-full h-auto md:w-[30%] md:h-full object-contain object-center"
+              loading="lazy"
+              aria-hidden="true"
+            />
 
-        </article>
+            {/* Title + body */}
+            <div className="relative flex flex-col gap-space-2 md:flex-1 w-full p-4 md:p-0">
+              <h3 className="font-display card__title text-primary">Impacto Comunitario</h3>
+              <p className="text-body-md text-secondary">Descubre cuánta energía, agua y CO₂ evitas al reciclar. Añade distintos materiales y calcula tu impacto combinado.</p>
+            </div>
+            
+            {/* Chevron button */}
+            <div className="relative flex flex-col gap-space-2 md:w-[10%] w-full items-center md:items-end">
+              <button
+                type="button"
+                onClick={() => onNavigate('calculator')}
+                aria-label="Ver calculadora de impacto"
+                className="material-symbols-outlined text-outline hover:text-primary transition-colors p-2 text-3xl"
+              >
+                chevron_right
+              </button>
+            </div>
+          </div>
+        </Card>
       </section>
 
       {/* ── Learn Section ── */}
@@ -98,21 +125,24 @@ const Dashboard = ({ onNavigate }) => {
           </div>
 
           <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-space-4">
-            {LEARN_CARDS.map(card => (
-              <Button
-                variant="ghost"
-                key={card.title}
-                onClick={() => onNavigate(card.view)}
-                className={`group text-left ${card.bg} rounded-xl p-space-4 custom-shadow transition-bezier hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2`}
-              >
-                <div className="flex items-center justify-between mb-space-3">
-                  <span className="bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-md text-label-md text-primary text-xs font-bold">{card.tag}</span>
-                  <span className="material-symbols-outlined text-primary text-[18px] group-hover:translate-x-1 transition-bezier">arrow_forward</span>
-                </div>
-                <h4 className="font-display text-headline-sm text-primary group-hover:underline">{card.title}</h4>
-                <p className="text-body-md text-on-surface-variant text-sm mt-1">{card.desc}</p>
-              </Button>
-            ))}
+            {LEARN_CARDS.map(card => {
+              const variant = card.bg === 'bg-mint-green' ? '02' : '01'
+              return (
+                <Card
+                  key={card.title}
+                  variant={variant}
+                  title={card.title}
+                  body={card.desc}
+                  onClick={() => onNavigate(card.view)}
+                  className="cursor-pointer"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-md text-label-md text-primary text-xs font-bold">{card.tag}</span>
+                    <span className="material-symbols-outlined text-primary text-[18px] ml-auto">arrow_forward</span>
+                  </div>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>

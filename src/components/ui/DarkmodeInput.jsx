@@ -1,17 +1,23 @@
 import { useTheme } from '../../contexts/ThemeContext'
-import Button from './Button'
+import './DarkmodeInput.css'
 
 export default function DarkmodeInput() {
   const { darkMode, toggleDarkMode } = useTheme()
 
   return (
-    <Button
-      variant={'ghost'}
+    <button
+      type="button"
       onClick={toggleDarkMode}
       aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-      className="p-2 rounded-full min-w-11 min-h-11 flex items-center justify-center"
+      className="darkmode-toggle min-w-11 min-h-11 flex items-center justify-center"
     >
-      <span className="material-symbols-outlined">{darkMode ? 'light_mode' : 'dark_mode'}</span>
-    </Button>
+      <span className="darkmode-toggle__icon">
+        {darkMode ? (
+          <img src="/icons/moon.svg" alt="" className="darkmode-toggle__img" aria-hidden="true" />
+        ) : (
+          <img src="/icons/sun.svg" alt="" className="darkmode-toggle__img" aria-hidden="true" />
+        )}
+      </span>
+    </button>
   )
 }
