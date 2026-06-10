@@ -107,5 +107,257 @@
     "difficulty": "Baja",
     "impact": "Alto",
     "icon": "lightbulb"
+  },
+  {
+    "id": 13,
+    "title": "Reúne el agua de lavado",
+    "body": "Recoge el agua del primer lavado de ropa o platos para regar plantas o fregar el suelo.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "local_laundry_service"
+  },
+  {
+    "id": 14,
+    "title": "Usa el microondas en vez del horno",
+    "body": "El microondas consume un 80% menos de energía que el horno convencional para calentar o cocinar porciones pequeñas.",
+    "category": "energía",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "microwave"
+  },
+  {
+    "id": 15,
+    "title": "Separa correctamente el papel",
+    "body": "Retira plásticos, cintas y grapas antes de depositar el papel en el contenedor azul. Un papel sucio no se puede reciclar.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "description"
+  },
+  {
+    "id": 16,
+    "title": "Planea tus rutas en coche",
+    "body": "Combina varios encargos en un solo viaje. Cada viaje innecesario quema combustible y emite CO₂ sin sentido.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "route"
+  },
+  {
+    "id": 17,
+    "title": "Cierra el grifo mientras te cepillas",
+    "body": "Dejar el grifo abierto durante el cepillado gasta 6 litros de agua. Ciérralo y solo ábrelo para enjuagar.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "water_drop"
+  },
+  {
+    "id": 18,
+    "title": "Aprovecha la luz natural",
+    "body": "Abre cortinas y persianas durante el día. Reducirás la necesidad de encender luces artificiales.",
+    "category": "energía",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "light_mode"
+  },
+  {
+    "id": 19,
+    "title": "Compra a granel",
+    "body": "Lleva tus propios envases a tiendas de producto a granel. Reduces drásticamente el embalaje de un solo uso.",
+    "category": "residuos",
+    "difficulty": "Media",
+    "impact": "Alto",
+    "icon": "scale"
+  },
+  {
+    "id": 20,
+    "title": "Conduce a velocidad constante",
+    "body": "Mantén entre 80 y 100 km/h en autopista. Aceleraciones y frenadas bruscas aumentan el consumo un 30%.",
+    "category": "transporte",
+    "difficulty": "Media",
+    "impact": "Alto",
+    "icon": "speed"
+  },
+  {
+    "id": 21,
+    "title": "Aprovecha la lluvia",
+    "body": "Instala un barril recolector de agua de lluvia para regar el jardín y limpiar. Es agua gratuita y sin cloro.",
+    "category": "agua",
+    "difficulty": "Media",
+    "impact": "Alto",
+    "icon": "cloudy"
+  },
+  {
+    "id": 22,
+    "title": "Programa el aire acondicionado",
+    "body": "Cada grado menos en el termostato ahorra un 7% de energía. Ponlo a 24°C en verano y 19°C en invierno.",
+    "category": "energía",
+    "difficulty": "Media",
+    "impact": "Alto",
+    "icon": "thermostat"
+  },
+  {
+    "id": 23,
+    "title": "Lleva envases reutilizables",
+    "body": "Containers, cubiertos y botellas reutilizables evitan toneladas de residuos plásticos cada año.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "lunch_dining"
+  },
+  {
+    "id": 24,
+    "title": "Usa apps de movilidad compartida",
+    "body": "Blablacar, carsharing o patinetes eléctricos son alternativas al coche propio para trayectos puntuales.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Medio",
+    "icon": "share"
+  },
+  {
+    "id": 25,
+    "title": "Repara fugas de agua",
+    "body": "Un grifo que gotea desperdicia hasta 20 litros al día. Revísalo regularmente y repáralo lo antes posible.",
+    "category": "agua",
+    "difficulty": "Media",
+    "impact": "Alto",
+    "icon": "plumbing"
+  },
+  {
+    "id": 26,
+    "title": "Carpooling con vecinos",
+    "body": "Comparte coche con vecinos o compañeros de trabajo que vayan al mismo destino. Reduces emisiones y gastos de combustible.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "electrical_services"
+  },
+  {
+    "id": 27,
+    "title": "Rechaza folletos y publicidad",
+    "body": "Pega un adhesivo 'No quiero publicidad' en tu buzón. Reduces el papel no deseado y ahorras tinta y cartón.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "mark_email_read"
+  },
+  {
+    "id": 28,
+    "title": "Camina al supermercado",
+    "body": "Si el supermercado está a menos de 15 minutos, ve caminando. Evitas usar el coche para compras pequeñas.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "directions_walk"
+  },
+  {
+    "id": 29,
+    "title": "Ducha en lugar de baño",
+    "body": "Un baño consume 150 litros. Una ducha de 5 minutos consume solo 50 litros. Ahorra 100 litros por vez.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "shower"
+  },
+  {
+    "id": 30,
+    "title": "Usa electrodomésticos eficientes",
+    "body": "Busca la etiqueta energética A+++ o superior. Un frigorífico eficiente puede ahorrar hasta 300 kWh al año.",
+    "category": "energía",
+    "difficulty": "Alta",
+    "impact": "Muy alto",
+    "icon": "kitchen"
+  },
+  {
+    "id": 31,
+    "title": "Dona lo que no usas",
+    "body": "Ropa, muebles y electrónica que no usas pueden tener una segunda vida. Dona en lugar de tirar.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "volunteer_activism"
+  },
+  {
+    "id": 32,
+    "title": "Frena suavemente",
+    "body": "El frenado regenerativo en vehículos híbridos y eléctricos recupera energía. Incluso en coches normales, frena progresivamente.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "speed"
+  },
+  {
+    "id": 33,
+    "title": "Vuelve a llenar la jarra del filtro",
+    "body": "El agua del grifo es segura y mucho más barata que la embotellada. Usa un filtro y rellena tu jarra.",
+    "category": "agua",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "water_drop"
+  },
+  {
+    "id": 34,
+    "title": "Apaga luces al salir",
+    "body": "Un hábito sencillo que ahorra hasta 100 kWh al año por cada foco que dejas de encender innecesariamente.",
+    "category": "energía",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "lightbulb"
+  },
+  {
+    "id": 35,
+    "title": "Evita los envases individuales",
+    "body": "Una botella de agua al día genera 365 envases al año. Lleva tu propia botella reutilizable.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Alto",
+    "icon": "local_drink"
+  },
+  {
+    "id": 36,
+    "title": "Mantenimiento del neumático",
+    "body": "Neumáticos bien inflados reducen el consumo de combustible un 3%. Revisa la presión mensualmente.",
+    "category": "transporte",
+    "difficulty": "Baja",
+    "impact": "Bajo",
+    "icon": "tire_repair"
+  },
+  {
+    "id": 37,
+    "title": "Instala un sistema de bajo flujo",
+    "body": "Los sistemas de bajo flujo en ducha y grifos pueden reducir el consumo de agua un 60% sin sacrificar comodidad.",
+    "category": "agua",
+    "difficulty": "Media",
+    "impact": "Muy alto",
+    "icon": "water"
+  },
+  {
+    "id": 38,
+    "title": "Aísla tu hogar térmicamente",
+    "body": "Buen aislamiento en paredes y ventanas reduce la necesidad de calefacción y refrigeración un 30%.",
+    "category": "energía",
+    "difficulty": "Alta",
+    "impact": "Muy alto",
+    "icon": "cottage"
+  },
+  {
+    "id": 39,
+    "title": "Aprende a reciclar bien",
+    "body": "Confundir categorías contamina todo un contenedor. Dedica 10 minutos a aprender las reglas de tu municipio.",
+    "category": "residuos",
+    "difficulty": "Baja",
+    "impact": "Muy alto",
+    "icon": "school"
+  },
+  {
+    "id": 40,
+    "title": "Trabaja desde casa cuando puedas",
+    "body": "Teletrabajar 2 días a la semana reduce las emisiones de transporte un 40%. Negocia opciones flexibles con tu empresa.",
+    "category": "transporte",
+    "difficulty": "Media",
+    "impact": "Muy alto",
+    "icon": "home"
   }
 ]

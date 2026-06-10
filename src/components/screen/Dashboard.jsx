@@ -8,9 +8,12 @@ import Hero from '../sections/hero'
 import ReglamentoEuropeo from '../sections/ReglamentoEuropeo'
 import Nosotros from '../sections/Nosotros'
 
-// Randomly pick a daily tip seeded by today's date
+// Select a deterministic daily tip based on the day of the year (covers all 40 tips)
 const getDailyTip = () => {
-  const idx = new Date().getDate() % ECO_TIPS.length
+  const now = new Date()
+  const start = new Date(now.getFullYear(), 0, 0)
+  const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24))
+  const idx = dayOfYear % ECO_TIPS.length
   return ECO_TIPS[idx]
 }
 
@@ -153,7 +156,7 @@ const Dashboard = ({ onNavigate }) => {
 
                 {/* Dark overlay for text readability over background image */}
                 <div
-                  className={`absolute inset-0 z-[1] ${darkMode ? 'bg-black/60' : 'bg-black/40'}`}
+                  className={`absolute inset-0 z-[1] ${darkMode ? 'bg-black/60' : 'bg-black/45'}`}
                   aria-hidden="true"
                 />
 
