@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import { ECO_TIPS } from '../../constants'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
+import Modal from '../ui/Modal'
 import Hero from '../sections/hero'
+import ReglamentoEuropeo from '../sections/ReglamentoEuropeo'
+import Nosotros from '../sections/Nosotros'
 
 // Randomly pick a daily tip seeded by today's date
 const getDailyTip = () => {
@@ -17,23 +21,25 @@ const KPI_CARDS = [
 
 const LEARN_CARDS = [
   {
-    title: 'Economía Circular en el Hogar',
-    desc: 'Cómo cerrar el ciclo de tus consumos diarios.',
-    tag: 'Avanzado',
+    title: 'Reglamento Europeo de Envases',
+    desc: 'Cómo Europa está regulando los envases para un futuro más sostenible.',
+    tag: 'Legal',
     bg: 'bg-surface-container',
-    view: 'guide',
+    action: 'modal',
   },
   {
-    title: 'Primeros Pasos en el Reciclaje',
-    desc: 'Los 5 materiales que más impacto tienen al reciclar.',
-    tag: 'Principiante',
+    title: 'Nosotros y el Reciclaje',
+    desc: 'Conoce nuestra misión y el por qué creamos esta plataforma.',
+    tag: 'Contacto',
     bg: 'bg-mint-green',
-    view: 'search',
+    action: 'modal-nosotros',
   },
 ]
 
 const Dashboard = ({ onNavigate }) => {
   const dailyTip = getDailyTip()
+  const [isReglamentoOpen, setIsReglamentoOpen] = useState(false)
+  const [isNosotrosOpen, setIsNosotrosOpen] = useState(false)
 
   return (
     <>
@@ -133,7 +139,11 @@ const Dashboard = ({ onNavigate }) => {
                   variant={variant}
                   title={card.title}
                   body={card.desc}
-                  onClick={() => onNavigate(card.view)}
+                  onClick={() => {
+                    if (card.action === 'modal') setIsReglamentoOpen(true)
+                    else if (card.action === 'modal-nosotros') setIsNosotrosOpen(true)
+                    else onNavigate(card.view)
+                  }}
                   className="cursor-pointer"
                 >
                   <div className="flex items-center justify-between">
@@ -148,6 +158,24 @@ const Dashboard = ({ onNavigate }) => {
       </section>
 
       </div>
+
+      {/* ── Reglamento Europeo Modal ── */}
+      <Modal
+        isOpen={isReglamentoOpen}
+        onClose={() => setIsReglamentoOpen(false)}
+        title="Reglamento Europeo de Envases"
+      >
+        <ReglamentoEuropeo />
+      </Modal>
+
+      {/* ── Nosotros Modal ── */}
+      <Modal
+        isOpen={isNosotrosOpen}
+        onClose={() => setIsNosotrosOpen(false)}
+        title="Nosotros y el Reciclaje"
+      >
+        <Nosotros />
+      </Modal>
     </>
   )
 }
