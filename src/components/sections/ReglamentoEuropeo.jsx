@@ -1,6 +1,11 @@
+import { useTheme } from '../../contexts/ThemeContext'
+import Button from '../ui/Button'
+
 const ReglamentoEuropeo = () => {
+  const { darkMode } = useTheme()
   return (
     <div className="space-y-4">
+      <div>
       <h1 className="font-display text-headline-lg text-primary">Europa regula el exceso de envases</h1>
       <p>El 19 de diciembre de 2024, la Unión Europea aprobó el Reglamento (UE) 2025/40 sobre envases y residuos de envases, una normativa que marcará un antes y un después en la forma en que se diseñan, fabrican y reciclan los envases que utilizamos cada día.</p>
       <p>Aunque pueda parecer una cuestión técnica, la realidad es que este reglamento afectará directamente a nuestras compras online, a los productos de supermercado, a la comida para llevar e incluso a la manera en que reciclamos en casa.</p>
@@ -45,9 +50,21 @@ const ReglamentoEuropeo = () => {
       <p>Para los consumidores, especialmente aquellos preocupados por la sostenibilidad, esta normativa representa un paso importante hacia productos más responsables y transparentes.</p>
 
       <h3 className="font-display text-headline-sm text-primary pt-2">Un cambio de mentalidad para toda Europa</h3>
-      <p>Más allá de las obligaciones para fabricantes y distribuidores, el Reglamento (UE) 2025/40 refleja un cambio de enfoque: dejar de considerar los envases como un residuo inevitable y empezar a verlos como recursos que pueden reutilizarse, reciclarse y mantenerse en circulación durante más tiempo.</p>
-      <p>La transición no será inmediata, pero el mensaje es claro: el futuro del consumo en Europa pasa por generar menos residuos, aprovechar mejor los materiales y diseñar productos pensando en todo su ciclo de vida, no solo en el momento de la compra.</p>
+        <p>Más allá de las obligaciones para fabricantes y distribuidores, el Reglamento (UE) 2025/40 refleja un cambio de enfoque: dejar de considerar los envases como un residuo inevitable y empezar a verlos como recursos que pueden reutilizarse, reciclarse y mantenerse en circulación durante más tiempo.</p>
+        <p>La transición no será inmediata, pero el mensaje es claro: el futuro del consumo en Europa pasa por generar menos residuos, aprovechar mejor los materiales y diseñar productos pensando en todo su ciclo de vida, no solo en el momento de la compra.</p>
+      </div>
+      <div className="flex justify-center">
+      <Button
+              variant="primary"
+              onClick={() => window.open('https://www.boe.es/doue/2025/040/L00001-00124.pdf', '_blank', 'noopener,noreferrer')}
+            >
+              <span className="material-symbols-outlined text-xl pr-2">balance</span>
+              Ver reglamento
+      </Button>
     </div>
+    </div>
+
+    
   )
 }
 

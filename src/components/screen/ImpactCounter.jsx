@@ -700,7 +700,7 @@ const ImpactCounter = ({ onNavigate }) => {
                   variant="secondary"
                   onClick={handleShareCard}
                   disabled={isExporting}
-                  className="w-full m-0 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full m-0 h-[44px] !flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="material-symbols-outlined text-[18px]">share</span>
                   Compartir
@@ -710,8 +710,7 @@ const ImpactCounter = ({ onNavigate }) => {
                   type="button"
                   onClick={handleDownloadCard}
                   disabled={isExporting}
-                  style={{ height: "44px" }}
-                  className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary text-on-primary text-label-md font-semibold hover:opacity-90 active:scale-95 transition-bezier disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+                  className="w-full m-0 h-[44px] flex items-center justify-center gap-2 rounded-lg bg-primary text-on-primary text-label-md font-semibold hover:opacity-90 active:scale-95 transition-bezier disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
                 >
                   <span className="material-symbols-outlined text-[18px]">download</span>
                   Descargar
