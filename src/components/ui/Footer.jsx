@@ -13,12 +13,12 @@ const SOCIAL_LINKS = [
   { label: 'Donations',   imgLight: '/icons/donations-green.svg', imgDark: '/icons/donations-mint.svg', href: 'https://buymeacoffee.com/johngvicent' },
 ]
 
-export default function Footer({ onNavigate }) {
+export default function Footer({ onNavigate, currentView }) {
   const { darkMode } = useTheme()
 
   return (
-    <footer className="hidden md:block bg-surface-container border-t border-border mt-auto">
-      <div className="grid grid-cols-3 gap-space-6 max-w-safe-width mx-auto px-space-4 py-space-6 w-full">
+    <footer className={`${currentView === 'dashboard' ? 'block' : 'hidden'} md:block bg-surface-container border-t border-border mt-auto`}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-space-6 max-w-safe-width mx-auto px-space-4 py-space-6 w-full">
 
         {/* Col 1 — Branding */}
         <div className="flex flex-col items-start gap-space-2">

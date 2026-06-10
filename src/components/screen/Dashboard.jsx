@@ -1,11 +1,19 @@
+import { useState } from 'react'
 import { ECO_TIPS } from '../../constants'
+import { useTheme } from '../../contexts/ThemeContext'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
+import Modal from '../ui/Modal'
 import Hero from '../sections/hero'
+import ReglamentoEuropeo from '../sections/ReglamentoEuropeo'
+import Nosotros from '../sections/Nosotros'
 
-// Randomly pick a daily tip seeded by today's date
+// Select a deterministic daily tip based on the day of the year (covers all 40 tips)
 const getDailyTip = () => {
-  const idx = new Date().getDate() % ECO_TIPS.length
+  const now = new Date()
+  const start = new Date(now.getFullYear(), 0, 0)
+  const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24))
+  const idx = dayOfYear % ECO_TIPS.length
   return ECO_TIPS[idx]
 }
 
@@ -17,23 +25,26 @@ const KPI_CARDS = [
 
 const LEARN_CARDS = [
   {
-    title: 'Economía Circular en el Hogar',
-    desc: 'Cómo cerrar el ciclo de tus consumos diarios.',
-    tag: 'Avanzado',
-    bg: 'bg-surface-container',
-    view: 'guide',
+    title: 'Reglamento Europeo de Envases',
+    desc: 'Cómo Europa está regulando los envases para un futuro más sostenible.',
+    tag: 'Legal',
+    image: '/img/recycling-bins.jpg',
+    action: 'modal',
   },
   {
-    title: 'Primeros Pasos en el Reciclaje',
-    desc: 'Los 5 materiales que más impacto tienen al reciclar.',
-    tag: 'Principiante',
-    bg: 'bg-mint-green',
-    view: 'search',
+    title: 'Nosotros y el Reciclaje',
+    desc: 'Conoce nuestra misión y el por qué creamos esta plataforma.',
+    tag: 'Contacto',
+    image: '/img/john-thumbnail.PNG',
+    action: 'modal-nosotros',
   },
 ]
 
 const Dashboard = ({ onNavigate }) => {
   const dailyTip = getDailyTip()
+  const { darkMode } = useTheme()
+  const [isReglamentoOpen, setIsReglamentoOpen] = useState(false)
+  const [isNosotrosOpen, setIsNosotrosOpen] = useState(false)
 
   return (
     <>
@@ -125,29 +136,64 @@ const Dashboard = ({ onNavigate }) => {
           </div>
 
           <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-space-4">
-            {LEARN_CARDS.map(card => {
-              const variant = card.bg === 'bg-mint-green' ? '02' : '01'
-              return (
-                <Card
-                  key={card.title}
-                  variant={variant}
-                  title={card.title}
-                  body={card.desc}
-                  onClick={() => onNavigate(card.view)}
-                  className="cursor-pointer"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-md text-label-md text-primary text-xs font-bold">{card.tag}</span>
-                    <span className="material-symbols-outlined text-primary text-[18px] ml-auto">arrow_forward</span>
+            {LEARN_CARDS.map(card => (
+              <Card
+                key={card.title}
+                variant="05"
+                onClick={() => {
+                  if (card.action === 'modal') setIsReglamentoOpen(true)
+                  else if (card.action === 'modal-nosotros') setIsNosotrosOpen(true)
+                  else onNavigate(card.view)
+                }}
+                className="cursor-pointer !p-0 min-h-[220px]"
+              >
+                {/* Background image filling the entire card area */}
+                <div
+                  className="absolute inset-0 z-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${card.image}')` }}
+                  aria-hidden="true"
+                />
+
+                {/* Dark overlay for text readability over background image */}
+                <div
+                  className={`absolute inset-0 z-[1] ${darkMode ? 'bg-black/60' : 'bg-black/45'}`}
+                  aria-hidden="true"
+                />
+
+                {/* Content above overlay */}
+                <div className="relative z-10 flex flex-col flex-1 p-6">
+                  <h3 className="font-display text-2xl font-bold text-white">{card.title}</h3>
+                  <p className="text-white/80 text-base leading-relaxed">{card.desc}</p>
+                  <div className="flex items-center justify-between mt-auto pt-2">
+                    <span className="bg-white/20 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white">{card.tag}</span>
+                    <span className="material-symbols-outlined text-white text-[18px] ml-auto">arrow_forward</span>
                   </div>
-                </Card>
-              )
-            })}
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       </div>
+
+      {/* ── Reglamento Europeo Modal ── */}
+      <Modal
+        isOpen={isReglamentoOpen}
+        onClose={() => setIsReglamentoOpen(false)}
+        title="Reglamento Europeo de Envases"
+      >
+        <ReglamentoEuropeo />
+      </Modal>
+
+      {/* ── Nosotros Modal ── */}
+      <Modal
+        isOpen={isNosotrosOpen}
+        onClose={() => setIsNosotrosOpen(false)}
+        title="Nosotros y el Reciclaje"
+      >
+        <Nosotros />
+      </Modal>
     </>
   )
 }

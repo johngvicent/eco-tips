@@ -66,7 +66,7 @@ function App() {
         </main>
 
         {/* ── Footer ── */}
-        <Footer onNavigate={navigate} />
+        <Footer onNavigate={navigate} currentView={currentView} />
 
         {/* ── Mobile Bottom Navigation ── */}
         <BottomNav currentView={currentView} onNavigate={navigate} />

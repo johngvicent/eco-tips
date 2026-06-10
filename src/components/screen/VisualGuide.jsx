@@ -140,6 +140,121 @@ const VisualGuide = ({ onNavigate }) => {
     }
   }
 
+  const renderDetailPanel = (c, containerItems, previewItems, itemsPerPage, totalPages, safePage, pageItems) => (
+    <div className={`bg-surface-container-lowest rounded-lg border-2 ${c.detailBorder} p-space-5 shadow-xl animate-detail-open`}>
+      <div className="flex flex-col md:flex-row gap-space-5">
+        {/* Left: items + eco tip */}
+        <div className="flex-1">
+          <h2 className={`font-display text-headline-md ${c.detailTitle} mb-space-4`}>
+            Contenedor {c.label}: {c.subtitle}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-space-4">
+            {/* What to deposit */}
+            <div>
+              <h4 className="text-label-md text-primary uppercase tracking-wider mb-2">Qué depositar</h4>
+              <ul className="space-y-2 text-on-surface-variant">
+                {previewItems.map(item => (
+                  <li key={item.name} className="flex items-center gap-2 text-body-md">
+                    <span className="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Eco Tip */}
+            <div className={`p-space-4 rounded-lg border ${c.tipBg}`}>
+              <h4 className={`text-label-md ${c.tipTitleColor} flex items-center gap-2 mb-2`}>
+                <span className="material-symbols-outlined text-[20px]">eco</span>
+                Eco Tip
+              </h4>
+              <p className={`text-body-md ${c.tipTextColor}`}>{c.ecotip}</p>
+            </div>
+          </div>
+
+          {/* All items toggle */}
+          {containerItems.length > 4 && (
+            <button
+              onClick={() => { setShowAllItems(v => !v); setCurrentPage(0) }}
+              className={`mt-space-4 flex items-center gap-1 text-label-md font-medium ${c.chevronColor} hover:underline`}
+            >
+              <span className="material-symbols-outlined text-[16px]">
+                {showAllItems ? 'expand_less' : 'expand_more'}
+              </span>
+              {showAllItems
+                ? 'Ocultar lista completa'
+                : `Ver todos los objetos (${containerItems.length})`}
+            </button>
+          )}
+        </div>
+
+        {/* Right: info / warning panel */}
+        <div className={`md:w-1/3 ${c.infoBg} p-space-4 rounded-lg`}>
+          <h4 className={`text-label-md ${c.infoTitle} mb-2 ${c.infoIsWarning ? 'font-bold' : ''}`}>
+            {c.infoIsWarning ? '⚠ Importante' : 'Información extra'}
+          </h4>
+          <p className={`text-body-md ${c.infoText} ${c.infoIsWarning ? 'font-medium' : 'italic'}`}>
+            {c.info}
+          </p>
+        </div>
+      </div>
+
+      {/* Full item cards when expanded – paginated */}
+      {showAllItems && (
+        <div className="mt-space-5 border-t border-border pt-space-5">
+          <div className="flex items-start gap-2">
+            {/* Left arrow */}
+            <button
+              onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+              disabled={safePage === 0}
+              aria-label="Página anterior"
+              className={`shrink-0 self-center w-9 h-9 rounded-full flex items-center justify-center border border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed ${c.chevronColor} enabled:hover:bg-surface-container`}
+            >
+              <span className="material-symbols-outlined text-[20px]">chevron_left</span>
+            </button>
+            {/* Cards grid: 3 cols × 2 rows desktop, 1 col × 2 rows mobile */}
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-space-3">
+              {pageItems.map(item => (
+                <div key={item.name} className="bg-surface-container rounded-lg p-space-3 border border-border">
+                  <div className="flex items-start gap-2 mb-2">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-0.5">{item.icon}</span>
+                    <div>
+                      <p className="font-display text-sm font-semibold text-primary leading-snug">{item.name}</p>
+                      <p className="text-label-md text-on-surface-variant">LER {item.lerCode}</p>
+                    </div>
+                  </div>
+                  <p className="text-body-md text-on-surface-variant text-sm mb-2">{item.preparation}</p>
+                  <div className="flex items-start gap-1 bg-idea-yellow/20 rounded-md px-2 py-1">
+                    <span
+                      className="material-symbols-outlined text-yellow-600 text-[14px] mt-0.5"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      tips_and_updates
+                    </span>
+                    <p className="text-label-md text-on-secondary-fixed-variant italic">{item.funFact}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Right arrow */}
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages - 1, p + 1))}
+              disabled={safePage === totalPages - 1}
+              aria-label="Página siguiente"
+              className={`shrink-0 self-center w-9 h-9 rounded-full flex items-center justify-center border border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed ${c.chevronColor} enabled:hover:bg-surface-container`}
+            >
+              <span className="material-symbols-outlined text-[20px]">chevron_right</span>
+            </button>
+          </div>
+          {totalPages > 1 && (
+            <p className="text-center mt-space-3 text-label-md text-on-surface-variant">
+              {safePage + 1} / {totalPages}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  )
+
   return (
     <div className="max-w-safe-width mx-auto px-space-4 py-space-6 space-y-space-6">
 
@@ -155,39 +270,53 @@ const VisualGuide = ({ onNavigate }) => {
       <section aria-label="Contenedores de reciclaje" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-4">
         {CONTAINERS.map(c => {
           const isActive = activeContainer === c.key
+          const containerItems = WASTE_DATA.filter(w => w.container === c.key)
+          const previewItems = containerItems.slice(0, 4)
+          const itemsPerPage = isMobile ? 2 : 6
+          const totalPages = Math.ceil(containerItems.length / itemsPerPage)
+          const safePage = Math.min(currentPage, Math.max(0, totalPages - 1))
+          const pageItems = containerItems.slice(safePage * itemsPerPage, (safePage + 1) * itemsPerPage)
           return (
-            <button
-              key={c.key}
-              onClick={() => handleToggle(c.key)}
-              aria-expanded={isActive}
-              className={`group flex flex-col bg-surface-container-lowest rounded-lg p-space-4 border text-left outline-none transition-all duration-300 focus:ring-2 ${c.cardFocusRing} ${
-                isActive
-                  ? `${c.detailBorder.replace('border-', 'border-')} shadow-lg border-2`
-                  : `border-border ${c.cardHoverBorder} hover:shadow-lg`
-              }`}
-            >
-              <div className={`w-12 h-12 rounded-lg ${c.iconBg} ${c.iconText ?? 'text-white'} flex items-center justify-center mb-space-3 shrink-0`}>
-                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>{c.icon}</span>
-              </div>
-              <h3 className={`font-display text-headline-sm ${c.titleColor}`}>{c.label}</h3>
-              <p className="text-label-md text-on-surface-variant mt-1">{c.subtitle}</p>
-              <div className={`mt-auto pt-4 flex items-center font-medium text-label-md ${c.chevronColor}`}>
-                <span>{isActive ? 'Ocultar' : 'Ver detalles'}</span>
-                <span
-                  className={`material-symbols-outlined ml-1 text-[18px] transition-transform duration-300 ${
-                    isActive ? 'rotate-180' : 'group-hover:translate-y-0.5'
-                  }`}
-                >
-                  keyboard_arrow_down
-                </span>
-              </div>
-            </button>
+            <div key={c.key} className="flex flex-col gap-0 self-start">
+              <button
+                onClick={() => handleToggle(c.key)}
+                aria-expanded={isActive}
+                className={`group flex flex-col bg-surface-container-lowest rounded-lg p-space-4 border text-left outline-none transition-all duration-300 focus:ring-2 ${c.cardFocusRing} ${
+                  isActive
+                    ? `${c.detailBorder.replace('border-', 'border-')} shadow-lg border-2`
+                    : `border-border ${c.cardHoverBorder} hover:shadow-lg`
+                }`}
+              >
+                <div className={`w-12 h-12 rounded-lg ${c.iconBg} ${c.iconText ?? 'text-white'} flex items-center justify-center mb-space-3 shrink-0`}>
+                  <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>{c.icon}</span>
+                </div>
+                <h3 className={`font-display text-headline-sm ${c.titleColor}`}>{c.label}</h3>
+                <p className="text-label-md text-on-surface-variant mt-1">{c.subtitle}</p>
+                <div className={`mt-auto pt-4 flex items-center font-medium text-label-md ${c.chevronColor}`}>
+                  <span>{isActive ? 'Ocultar' : 'Ver detalles'}</span>
+                  <span
+                    className={`material-symbols-outlined ml-1 text-[18px] transition-transform duration-300 ${
+                      isActive ? 'rotate-180' : 'group-hover:translate-y-0.5'
+                    }`}
+                  >
+                    keyboard_arrow_down
+                  </span>
+                </div>
+              </button>
+
+              {/* Mobile inline detail — shows below the card on mobile */}
+              {isActive && isMobile && (
+                <div className="mt-space-3">
+                  {renderDetailPanel(c, containerItems, previewItems, itemsPerPage, totalPages, safePage, pageItems)}
+                </div>
+              )}
+            </div>
           )
         })}
       </section>
 
-      {/* Expanded Detail Panels */}
-      <div className="space-y-space-4">
+      {/* Desktop detail panels — only visible on desktop */}
+      <div className="hidden sm:block space-y-space-4">
         {CONTAINERS.map(c => {
           if (activeContainer !== c.key) return null
           const containerItems = WASTE_DATA.filter(w => w.container === c.key)
@@ -196,123 +325,9 @@ const VisualGuide = ({ onNavigate }) => {
           const totalPages = Math.ceil(containerItems.length / itemsPerPage)
           const safePage = Math.min(currentPage, Math.max(0, totalPages - 1))
           const pageItems = containerItems.slice(safePage * itemsPerPage, (safePage + 1) * itemsPerPage)
-          return (
-            <div key={c.key} className={`bg-surface-container-lowest rounded-lg border-2 ${c.detailBorder} p-space-5 shadow-xl`}>
-              <div className="flex flex-col md:flex-row gap-space-5">
-                {/* Left: items + eco tip */}
-                <div className="flex-1">
-                  <h2 className={`font-display text-headline-md ${c.detailTitle} mb-space-4`}>
-                    Contenedor {c.label}: {c.subtitle}
-                  </h2>
-                  <div className="grid md:grid-cols-2 gap-space-4">
-                    {/* What to deposit */}
-                    <div>
-                      <h4 className="text-label-md text-primary uppercase tracking-wider mb-2">Qué depositar</h4>
-                      <ul className="space-y-2 text-on-surface-variant">
-                        {previewItems.map(item => (
-                          <li key={item.name} className="flex items-center gap-2 text-body-md">
-                            <span className="material-symbols-outlined text-green-600 text-[20px]">check_circle</span>
-                            {item.name}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    {/* Eco Tip */}
-                    <div className={`p-space-4 rounded-lg border ${c.tipBg}`}>
-                      <h4 className={`text-label-md ${c.tipTitleColor} flex items-center gap-2 mb-2`}>
-                        <span className="material-symbols-outlined text-[20px]">eco</span>
-                        Eco Tip
-                      </h4>
-                      <p className={`text-body-md ${c.tipTextColor}`}>{c.ecotip}</p>
-                    </div>
-                  </div>
-
-                  {/* All items toggle */}
-                  {containerItems.length > 4 && (
-                    <button
-                      onClick={() => { setShowAllItems(v => !v); setCurrentPage(0) }}
-                      className={`mt-space-4 flex items-center gap-1 text-label-md font-medium ${c.chevronColor} hover:underline`}
-                    >
-                      <span className="material-symbols-outlined text-[16px]">
-                        {showAllItems ? 'expand_less' : 'expand_more'}
-                      </span>
-                      {showAllItems
-                        ? 'Ocultar lista completa'
-                        : `Ver todos los objetos (${containerItems.length})`}
-                    </button>
-                  )}
-                </div>
-
-                {/* Right: info / warning panel */}
-                <div className={`md:w-1/3 ${c.infoBg} p-space-4 rounded-lg`}>
-                  <h4 className={`text-label-md ${c.infoTitle} mb-2 ${c.infoIsWarning ? 'font-bold' : ''}`}>
-                    {c.infoIsWarning ? '⚠ Importante' : 'Información extra'}
-                  </h4>
-                  <p className={`text-body-md ${c.infoText} ${c.infoIsWarning ? 'font-medium' : 'italic'}`}>
-                    {c.info}
-                  </p>
-                </div>
-              </div>
-
-              {/* Full item cards when expanded – paginated */}
-              {showAllItems && (
-                <div className="mt-space-5 border-t border-border pt-space-5">
-                  <div className="flex items-start gap-2">
-                    {/* Left arrow */}
-                    <button
-                      onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
-                      disabled={safePage === 0}
-                      aria-label="Página anterior"
-                      className={`shrink-0 self-center w-9 h-9 rounded-full flex items-center justify-center border border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed ${c.chevronColor} enabled:hover:bg-surface-container`}
-                    >
-                      <span className="material-symbols-outlined text-[20px]">chevron_left</span>
-                    </button>
-                    {/* Cards grid: 3 cols × 2 rows desktop, 1 col × 2 rows mobile */}
-                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-space-3">
-                      {pageItems.map(item => (
-                        <div key={item.name} className="bg-surface-container rounded-lg p-space-3 border border-border">
-                          <div className="flex items-start gap-2 mb-2">
-                            <span className="material-symbols-outlined text-primary text-[20px] mt-0.5">{item.icon}</span>
-                            <div>
-                              <p className="font-display text-sm font-semibold text-primary leading-snug">{item.name}</p>
-                              <p className="text-label-md text-on-surface-variant">LER {item.lerCode}</p>
-                            </div>
-                          </div>
-                          <p className="text-body-md text-on-surface-variant text-sm mb-2">{item.preparation}</p>
-                          <div className="flex items-start gap-1 bg-idea-yellow/20 rounded-md px-2 py-1">
-                            <span
-                              className="material-symbols-outlined text-yellow-600 text-[14px] mt-0.5"
-                              style={{ fontVariationSettings: "'FILL' 1" }}
-                            >
-                              tips_and_updates
-                            </span>
-                            <p className="text-label-md text-on-secondary-fixed-variant italic">{item.funFact}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    {/* Right arrow */}
-                    <button
-                      onClick={() => setCurrentPage(p => Math.min(totalPages - 1, p + 1))}
-                      disabled={safePage === totalPages - 1}
-                      aria-label="Página siguiente"
-                      className={`shrink-0 self-center w-9 h-9 rounded-full flex items-center justify-center border border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed ${c.chevronColor} enabled:hover:bg-surface-container`}
-                    >
-                      <span className="material-symbols-outlined text-[20px]">chevron_right</span>
-                    </button>
-                  </div>
-                  {totalPages > 1 && (
-                    <p className="text-center mt-space-3 text-label-md text-on-surface-variant">
-                      {safePage + 1} / {totalPages}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          )
+          return renderDetailPanel(c, containerItems, previewItems, itemsPerPage, totalPages, safePage, pageItems)
         })}
       </div>
-
       {/* CTA Banner */}
       <section
         className="relative rounded-lg p-space-6 flex flex-col md:flex-row items-center justify-between gap-space-5 shadow-md overflow-hidden"
