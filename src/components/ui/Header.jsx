@@ -15,17 +15,19 @@ export default function Header({ currentView, onNavigate }) {
 
   return (
     <header className="bg-surface sticky top-0 z-50 border-b border-border">
-      <div className="flex justify-between items-center max-w-safe-width mx-auto px-space-4 h-20 w-full">
+      <div className="flex items-center md:justify-between max-w-safe-width mx-auto px-space-4 h-20 w-full">
 
-        {/* Brand */}
-        <Button
-          variant="ghost"
-          onClick={() => onNavigate('dashboard')}
-          className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 focus-visible:rounded-sm"
-          aria-label="EcoTips — volver al inicio"
-        >
-          <img src={darkMode ? "/branding/ecologo-white.svg" : "/branding/ecologo.svg"} alt="EcoTips" className="h-16 w-auto" />
-        </Button>
+        {/* Brand — 40% on mobile */}
+        <div className="w-[40%] md:w-auto flex justify-start">
+          <Button
+            variant="ghost"
+            onClick={() => onNavigate('dashboard')}
+            className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 focus-visible:rounded-sm"
+            aria-label="EcoTips — volver al inicio"
+          >
+            <img src={darkMode ? "/branding/ecologo-white.svg" : "/branding/ecologo.svg"} alt="EcoTips" className="h-[45px] w-auto" />
+          </Button>
+        </div>
 
         {/* Desktop nav */}
         <nav aria-label="Navegación principal" className="hidden md:flex items-center gap-space-4">
@@ -49,13 +51,20 @@ export default function Header({ currentView, onNavigate }) {
           })}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-space-3">
+        {/* Darkmode — centered, 20% on mobile */}
+        <div className="w-[20%] md:w-auto flex justify-center md:hidden">
           <DarkmodeInput />
+        </div>
+
+        {/* Actions — 40% on mobile */}
+        <div className="w-[40%] md:w-auto flex items-center justify-end gap-space-3">
+          <div className="hidden md:block">
+            <DarkmodeInput />
+          </div>
           <Button
             variant={darkMode ? 'primary-darkmode' : 'primary'}
             onClick={() => onNavigate('search')}
-            className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+            className="max-md:!m-0 max-md:!px-[35px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
           >
             Comenzar
           </Button>
